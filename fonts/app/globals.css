@@ -1,0 +1,316 @@
+@import "tailwindcss";
+
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-Thin.woff2") format("woff2"); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-ThinItalic.woff2") format("woff2"); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-ExtraLight.woff2") format("woff2"); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-ExtraLightItalic.woff2") format("woff2"); font-weight: 200; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-Light.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-LightItalic.woff2") format("woff2"); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-MediumItalic.woff2") format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-SemiBoldItalic.woff2") format("woff2"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-BoldItalic.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-ExtraBold.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-ExtraBoldItalic.woff2") format("woff2"); font-weight: 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Appendard Web"; src: url("/share/fonts/fonts/appendard/SNUAppendard-BlackItalic.woff2") format("woff2"); font-weight: 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Sprout Web"; src: url("/share/fonts/fonts/sprout/SNUSprout-Thin.woff2?v=0.9.0") format("woff2"); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Sprout Web"; src: url("/share/fonts/fonts/sprout/SNUSprout-ThinItalic.woff2?v=0.9.0") format("woff2"); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Sprout Web"; src: url("/share/fonts/fonts/sprout/SNUSprout-Light.woff2?v=0.9.0") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Sprout Web"; src: url("/share/fonts/fonts/sprout/SNUSprout-LightItalic.woff2?v=0.9.0") format("woff2"); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Sprout Web"; src: url("/share/fonts/fonts/sprout/SNUSprout-Regular.woff2?v=0.9.0") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Sprout Web"; src: url("/share/fonts/fonts/sprout/SNUSprout-RegularItalic.woff2?v=0.9.0") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Sprout Web"; src: url("/share/fonts/fonts/sprout/SNUSprout-Medium.woff2?v=0.9.0") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Sprout Web"; src: url("/share/fonts/fonts/sprout/SNUSprout-MediumItalic.woff2?v=0.9.0") format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Sprout Web"; src: url("/share/fonts/fonts/sprout/SNUSprout-SemiBold.woff2?v=0.9.0") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Sprout Web"; src: url("/share/fonts/fonts/sprout/SNUSprout-SemiBoldItalic.woff2?v=0.9.0") format("woff2"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Sprout Web"; src: url("/share/fonts/fonts/sprout/SNUSprout-Bold.woff2?v=0.9.0") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Sprout Web"; src: url("/share/fonts/fonts/sprout/SNUSprout-BoldItalic.woff2?v=0.9.0") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Sprout Web"; src: url("/share/fonts/fonts/sprout/SNUSprout-ExtraBold.woff2?v=0.9.0") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Sprout Web"; src: url("/share/fonts/fonts/sprout/SNUSprout-ExtraBoldItalic.woff2?v=0.9.0") format("woff2"); font-weight: 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Sprout Web"; src: url("/share/fonts/fonts/sprout/SNUSprout-Black.woff2?v=0.9.0") format("woff2"); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Sprout Web"; src: url("/share/fonts/fonts/sprout/SNUSprout-BlackItalic.woff2?v=0.9.0") format("woff2"); font-weight: 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-Thin.woff2") format("woff2"); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-ThinItalic.woff2") format("woff2"); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-Light.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-LightItalic.woff2") format("woff2"); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-RegularItalic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-MediumItalic.woff2") format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-SemiBoldItalic.woff2") format("woff2"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-BoldItalic.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-ExtraBold.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-ExtraBoldItalic.woff2") format("woff2"); font-weight: 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-BlackItalic.woff2") format("woff2"); font-weight: 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Pretendard Source"; src: url("/share/fonts/fonts/source/PretendardVariable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Inter Source"; src: url("/share/fonts/fonts/source/InterVariable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Inter Source"; src: url("/share/fonts/fonts/source/InterVariable-Italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "LINE Seed Source"; src: url("/share/fonts/fonts/source/LINESeedKR-Th.woff2") format("woff2"); font-weight: 100; font-display: swap; }
+@font-face { font-family: "LINE Seed Source"; src: url("/share/fonts/fonts/source/LINESeedKR-Rg.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "LINE Seed Source"; src: url("/share/fonts/fonts/source/LINESeedKR-Bd.woff2") format("woff2"); font-weight: 700 900; font-display: swap; }
+@font-face { font-family: "NanumSquare Source"; src: url("/share/fonts/fonts/source/NanumSquareL.woff2") format("woff2"); font-weight: 100 300; font-display: swap; }
+@font-face { font-family: "NanumSquare Source"; src: url("/share/fonts/fonts/source/NanumSquareR.woff2") format("woff2"); font-weight: 400 500; font-display: swap; }
+@font-face { font-family: "NanumSquare Source"; src: url("/share/fonts/fonts/source/NanumSquareB.woff2") format("woff2"); font-weight: 600 700; font-display: swap; }
+@font-face { font-family: "NanumSquare Source"; src: url("/share/fonts/fonts/source/NanumSquareEB.woff2") format("woff2"); font-weight: 800 900; font-display: swap; }
+@font-face { font-family: "Montserrat Source"; src: url("/share/fonts/fonts/source/MontserratVariable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Montserrat Source"; src: url("/share/fonts/fonts/source/MontserratVariable-Italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+
+:root { --background:#ffffff; --text:#172033; --text-strong:#101827; --muted:#657080; --border:#d8dde6; --edge:#6f33d8; --sprout:#15836d; --appendard:#2864dc; --pink:#e64a9b; --pale-blue:#eef4ff; --pale-green:#edf8f5; --pale-violet:#f1ebfb; --on-dark:#fff; --dark-muted:rgba(255,255,255,.62); --dark-border:rgba(255,255,255,.2); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--background); color:var(--text); font-family:Arial,"Apple SD Gothic Neo",sans-serif; }
+button,input,textarea,select { font:inherit; }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { color:inherit; }
+a { color:inherit; text-decoration:none; }
+::selection { background:var(--sprout); color:var(--on-dark); }
+.font-appendard { font-family:"SNU Appendard Web",sans-serif; }
+.font-appendard,.font-sprout,.font-edge { font-synthesis:none; }
+.font-sprout { font-family:"SNU Sprout Web",sans-serif; }
+.font-edge { font-family:"SNU Edge Web",sans-serif; }
+
+.topbar { position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:22px 3vw; border-bottom:1px solid var(--border); background:rgba(255,255,255,.92); backdrop-filter:blur(14px); font-size:12px; font-weight:750; text-transform:uppercase; }
+.wordmark { font-size:20px; font-weight:800; letter-spacing:normal; text-transform:none; }
+.topbar nav { display:flex; gap:28px; }
+.topbar nav a,.hero-cta,.credits a { transition:opacity .2s ease; }
+.topbar nav a:hover,.hero-cta:hover,.credits a:hover { opacity:.55; }
+
+.hero { min-height:860px; padding:54px 3vw 0; overflow:hidden; }
+.eyebrow,.section-no,.specimen-label { margin:0; font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+.hero h1 { margin:70px 0 30px; max-width:1400px; font-size:clamp(68px,9.2vw,140px); font-weight:400; line-height:.96; letter-spacing:normal; }
+.hero-kicker { color:var(--edge); font:inherit; font-family:"SNU Edge Web",sans-serif; font-size:60%; font-weight:300; }
+.hero h1 em { color:var(--text-strong); font:inherit; font-family:"SNU Appendard Web",sans-serif; font-weight:800; }
+.hero-copy { max-width:590px; margin:0 0 0 auto; font:clamp(19px,2vw,29px)/1.5 "SNU Edge Web",sans-serif; }
+.hero-cta { display:flex; width:280px; justify-content:space-between; align-items:center; margin:52px 0 0 auto; padding:17px 0; border-block:1px solid var(--border); font-size:13px; font-weight:750; }
+.hero-cta b { font-size:19px; }
+.family-marquee { display:flex; align-items:baseline; gap:26px; margin:70px -4vw 0; padding:20px 4vw 24px; border-block:1px solid var(--border); color:var(--text); white-space:nowrap; font-size:clamp(34px,5vw,78px); font-weight:700; letter-spacing:normal; }
+.family-marquee i { color:var(--pink); font-style:normal; font-weight:300; }
+
+.compare-section { --family-accent:var(--edge); background:var(--text); color:var(--on-dark); padding:120px 3vw 130px; }
+.section-heading { display:grid; grid-template-columns:1fr 2fr; margin-bottom:80px; }
+.section-heading h2 { margin:0; font-size:clamp(33.28px,4.608vw,69.12px); line-height:.98; letter-spacing:normal; }
+.family-tabs { display:grid; grid-template-columns:repeat(3,1fr); margin-bottom:0; border:1px solid var(--dark-border); }
+.family-tabs button { display:flex; gap:16px; align-items:center; padding:18px 20px; border:0; border-right:1px solid var(--dark-border); background:transparent; color:var(--dark-muted); cursor:pointer; text-align:left; }
+.family-tabs button:last-child { border-right:0; }
+.family-tabs button span { font-size:10px; }
+.family-tabs button.active { background:var(--family-accent); color:var(--on-dark); font-weight:800; }
+.tester-shell { overflow:hidden; }
+.tester-text { position:relative; padding:22px; border:1px solid var(--dark-border); background:rgba(255,255,255,.06); }
+.tester-text>label { display:block; margin-bottom:10px; color:var(--dark-muted); font-size:10px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+.tester-text textarea { width:calc(100% - 150px); min-height:72px; resize:vertical; border:0; outline:0; background:transparent; color:var(--on-dark); font:23px/1.45 "SNU Edge Web",sans-serif; }
+.preset-list { position:absolute; right:20px; top:20px; display:flex; gap:6px; }
+.preset-list button { width:30px; height:30px; border:1px solid var(--dark-border); border-radius:50%; background:transparent; color:var(--dark-muted); cursor:pointer; font-size:10px; }
+.preset-list button:hover { background:var(--family-accent); color:var(--on-dark); }
+.tester-controls { display:grid; grid-template-columns:1.2fr 1.2fr 1fr 1fr 1fr; border-inline:1px solid var(--dark-border); border-bottom:1px solid var(--dark-border); }
+.tester-spacer { height:24px; }
+.tester-controls>label,.button-control { min-width:0; padding:17px; border-right:1px solid var(--dark-border); }
+.tester-controls>*:last-child { border-right:0; }
+.tester-controls label span { display:flex; justify-content:space-between; margin-bottom:11px; color:var(--dark-muted); font-size:10px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.tester-controls input { width:100%; accent-color:var(--family-accent); }
+.tester-controls select { width:100%; border:0; outline:0; background:transparent; color:var(--on-dark); }
+.button-control { display:grid; grid-template-columns:1fr 1fr; gap:4px; }
+.button-control button { border:1px solid var(--dark-border); background:transparent; color:var(--dark-muted); cursor:pointer; font-size:11px; }
+.button-control button.active { border-color:var(--family-accent); background:var(--family-accent); color:var(--on-dark); }
+.comparison-stage { display:grid; grid-template-columns:1fr; border-inline:1px solid var(--dark-border); border-bottom:1px solid var(--dark-border); }
+.font-pane { min-width:0; min-height:132px; padding:22px; overflow:hidden; }
+.font-pane+ .font-pane { border-top:1px solid var(--dark-border); }
+.original-pane .sample-label b { color:var(--border); }
+.original-pane .sample-text { color:var(--border); }
+.modified-pane { background:var(--family-accent); color:var(--on-dark); }
+.sample-label { display:flex; justify-content:space-between; gap:15px; font-size:10px; letter-spacing:.05em; text-transform:uppercase; }
+.sample-label span { text-align:right; opacity:.55; }
+.sample-label b { text-align:left; }
+.sample-text { margin:24px 0 0; line-height:1.16; overflow-wrap:anywhere; }
+.source-pretendard { font-family:"Pretendard Source",sans-serif; font-style:normal; font-synthesis:none; }
+.source-sprout { font-family:"LINE Seed Source",sans-serif; font-style:normal; font-synthesis:none; }
+.source-nanumsquare { font-family:"NanumSquare Source",sans-serif; font-style:normal; font-synthesis:none; }
+.comparison-stage.overlay { position:relative; display:grid; grid-template-columns:1fr; }
+.comparison-stage.overlay .font-pane { grid-area:1/1; border:0; }
+.comparison-stage.overlay .original-pane { z-index:2; pointer-events:none; }
+.comparison-stage.overlay .original-pane .sample-label { visibility:hidden; }
+.comparison-stage.overlay .original-pane .sample-text { color:var(--border); mix-blend-mode:multiply; opacity:.78; }
+.comparison-stage.overlay .modified-pane { background:var(--background); color:var(--family-accent); }
+
+.families-intro { display:grid; grid-template-columns:1fr 2fr; gap:35px; padding:130px 3vw 150px; }
+.families-intro h2 { margin:0; color:var(--appendard); font-size:clamp(35.84px,5.12vw,78.08px); line-height:.89; letter-spacing:normal; }
+.families-intro h2 i { color:var(--text); font-family:"SNU Edge Web",sans-serif; font-style:normal; font-weight:400; }
+.families-intro>p:last-child { grid-column:2; max-width:620px; margin:30px 0 0 auto; font-size:21px; line-height:1.55; }
+
+.biology-brief { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:14px; padding:0 3vw 140px; }
+.feature-card { display:flex; min-width:0; min-height:590px; flex-direction:column; padding:30px; overflow:hidden; border:1px solid var(--border); background:var(--background); }
+.feature-italic { grid-column:span 7; background:var(--pale-blue); }
+.feature-weight { grid-column:span 5; background:var(--pale-green); }
+.feature-latin { grid-column:span 5; background:var(--pale-violet); }
+.feature-width { grid-column:span 7; border-color:var(--edge); background:var(--edge); color:var(--on-dark); }
+.feature-meta { display:flex; justify-content:space-between; gap:24px; font-size:10px; font-weight:800; letter-spacing:.12em; }
+.feature-meta b { font-size:inherit; }
+.feature-demo { min-height:190px; margin:44px 0; border-block:1px solid var(--border); }
+.feature-copy { margin-top:auto; }
+.feature-copy h3 { margin:0 0 28px; font-size:clamp(34px,4vw,61px); line-height:.98; letter-spacing:normal; }
+.feature-copy p { max-width:620px; margin:0; font-size:16px; line-height:1.6; }
+.weight-copy h3>span { display:block; }
+.italic-demo>div { display:grid; grid-template-columns:90px 1fr; align-items:baseline; gap:16px; padding:9px 0; border-bottom:1px solid var(--border); }
+.italic-demo>div:last-child { border-bottom:0; }
+.italic-demo span,.latin-demo span,.width-demo span { font:800 9px/1 Arial,sans-serif; letter-spacing:.1em; }
+.italic-demo p { min-width:0; margin:0 0 -.18em; padding-bottom:.18em; overflow:hidden; font-size:clamp(29px,3.4vw,52px); line-height:1.05; white-space:nowrap; }
+.weight-demo { display:flex; flex-direction:column; justify-content:center; }
+.weight-specimen { min-width:0; padding:11px 0 13px; border-bottom:1px solid var(--border); }
+.weight-specimen:last-child { border-bottom:0; }
+.weight-specimen-label { display:block; margin-bottom:7px; font:800 9px/1.3 Arial,sans-serif; letter-spacing:.1em; }
+.weight-word { display:flex; width:max-content; max-width:100%; align-items:baseline; font-size:clamp(24px,2.65vw,40px); line-height:1.02; letter-spacing:normal; white-space:nowrap; }
+.weight-word[lang="en"] { font-size:clamp(21px,2.35vw,35px); }
+.weight-word>span { display:inline-block; }
+.latin-demo,.width-demo { display:flex; flex-direction:column; justify-content:center; }
+.latin-demo>div,.width-demo>div { min-width:0; padding:14px 0; border-bottom:1px solid var(--border); overflow:hidden; }
+.latin-demo>div:last-child,.width-demo>div:last-child { border-bottom:0; }
+.latin-demo p { margin:6px 0 0; overflow:hidden; font-size:clamp(17.6px,2.24vw,32.8px); line-height:1.1; letter-spacing:normal; white-space:nowrap; }
+.width-demo p { display:inline-block; width:max-content; max-width:100%; margin:7px 0 0; padding:8px 10px; overflow:hidden; background:rgba(255,255,255,.1); font-size:clamp(19.2px,2.4vw,35.2px); line-height:1.05; letter-spacing:normal; white-space:nowrap; }
+.feature-width .feature-demo { border-color:var(--dark-border); }
+.feature-width .width-demo>div { border-color:var(--dark-border); }
+.feature-width .feature-meta,.feature-width .width-demo span { color:var(--dark-muted); }
+
+.family-story { padding:120px 3vw 140px; border-top:1px solid var(--border); background:var(--background); }
+.story-edge { background:var(--pale-violet); }
+.story-sprout { background:var(--pale-green); }
+.story-appendard { background:var(--pale-blue); }
+.story-head { display:grid; grid-template-columns:1fr 2fr; }
+.story-index { margin:0; font-size:12px; font-weight:800; }
+.story-source { margin:0 0 24px; font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+.story-head h2 { margin:0; color:var(--accent); font-size:clamp(57px,8vw,122px); line-height:.88; letter-spacing:normal; }
+.story-sprout .story-head h2 { font-weight:700; }
+.story-head h3 { max-width:840px; margin:40px 0 25px; color:var(--text); font-size:clamp(31px,4vw,62px); line-height:1.03; letter-spacing:normal; }
+.story-summary { max-width:620px; margin-left:auto; font-size:19px; line-height:1.6; }
+.use-list { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:8px; max-width:620px; margin:24px 0 0 auto; padding:0; list-style:none; }
+.use-list li { padding:9px 12px; border:1px solid var(--border); border-radius:999px; font-size:11px; font-weight:750; letter-spacing:normal; }
+.stat-grid { display:grid; grid-template-columns:repeat(3,1fr); margin:95px 0; border:1px solid var(--accent); background:var(--accent); color:var(--on-dark); }
+.stat-grid article { min-height:260px; padding:25px; border-right:1px solid var(--dark-border); }
+.stat-grid article:last-child { border-right:0; }
+.stat-grid strong { display:block; margin-bottom:55px; transform:translateY(20px); font-size:clamp(48px,6vw,88px); line-height:.9; letter-spacing:normal; }
+.stat-grid h4 { margin:0 0 8px; font-size:14px; font-weight:600; }
+.stat-grid p { max-width:270px; margin:0; font-size:13px; line-height:1.45; }
+.specimen-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border:1px solid var(--border); background:var(--background); }
+.specimen { min-width:0; min-height:340px; padding:24px; overflow:hidden; border-right:1px solid var(--border); border-bottom:1px solid var(--border); }
+.specimen:nth-child(even) { border-right:0; }
+.specimen:nth-last-child(-n+2) { border-bottom:0; }
+.specimen-label { display:block; margin-bottom:70px; color:var(--muted); }
+.specimen-lead { background:var(--text); color:var(--on-dark); }
+.specimen-lead .specimen-label { margin-bottom:30px; color:var(--dark-muted); }
+.presentation-slide h4 { margin:0 0 28px; text-align:center; font-size:clamp(22px,2.2vw,34px); font-weight:700; line-height:1.15; letter-spacing:normal; }
+.presentation-slide ul { margin:0; padding-left:1.25em; list-style:none; font-size:clamp(10px,1.65vw,18px); line-height:1.42; letter-spacing:normal; }
+.presentation-slide li { position:relative; }
+.presentation-slide li::before { position:absolute; left:-.9em; color:var(--dark-muted); font-weight:700; content:"-"; }
+.presentation-slide>ul>li+li { margin-top:.5em; }
+.presentation-slide ul ul { margin-top:.25em; padding-left:1.2em; font-size:.92em; }
+.presentation-slide ul ul li+li { margin-top:.25em; }
+.presentation-slide strong { font-weight:700; }
+.presentation-slide em { font-style:italic; }
+.presentation-slide sup { font-size:.68em; font-weight:600; line-height:0; vertical-align:super; }
+.presentation-prompt { margin:20px 0 0; padding-top:12px; border-top:1px solid var(--dark-border); font-size:clamp(12px,1vw,16px); line-height:1.4; }
+.specimen-proposal { min-height:0; contain:size; }
+.specimen-proposal .specimen-label { margin-bottom:32px; }
+.proposal-document { color:var(--text); font-size:clamp(10.8px,1.02vw,15.6px); font-weight:400; line-height:1.62; letter-spacing:normal; }
+.proposal-document h4 { margin:0; padding-bottom:12px; border-bottom:2px solid var(--text); font-size:clamp(19.2px,1.74vw,26.4px); font-weight:700; line-height:1.35; letter-spacing:normal; }
+.proposal-document>p,.proposal-section p { margin:14px 0 0; text-align:justify; word-break:keep-all; }
+.proposal-section { margin-top:22px; }
+.proposal-section h5 { margin:0; padding-left:10px; border-left:3px solid var(--accent); font-size:clamp(14.4px,1.26vw,19.2px); font-weight:700; line-height:1.4; letter-spacing:normal; }
+.proposal-document sup { font-size:.7em; font-weight:600; line-height:0; vertical-align:super; }
+.weight-family { width:68%; margin:90px auto 0; border-top:1px solid var(--border); }
+.weight-heading,.weight-row { display:grid; grid-template-columns:80px 140px 1fr; align-items:baseline; gap:18px; }
+.weight-heading { padding:13px 0; border-bottom:1px solid var(--border); font-size:10px; font-weight:800; letter-spacing:.1em; }
+.weight-row { padding:1.75px 0; }
+.weight-row:last-child { border-bottom:1px solid var(--border); }
+.weight-heading span:first-child { grid-column:1/3; }
+.weight-heading span:last-child { grid-column:3; text-align:right; }
+.weight-row>span:nth-child(-n+2) { font-size:11px; font-weight:700; text-transform:uppercase; }
+.weight-row>span:nth-child(n+3) { display:block; min-width:0; overflow:hidden; white-space:nowrap; }
+.weight-row>span:nth-child(3) { font-size:clamp(15px,1.8vw,25.8px); }
+
+.glyph-section { padding:130px 3vw; background:var(--text-strong); color:var(--on-dark); overflow:hidden; }
+.glyph-wall { margin-top:75px; }
+.glyph-wall p { margin:0; border-top:1px solid var(--dark-border); font-size:clamp(34px,6.3vw,98px); line-height:1.25; white-space:nowrap; letter-spacing:normal; }
+.glyph-wall p:nth-child(2) { color:var(--pale-violet); font-style:italic; }
+.glyph-wall p:nth-child(3) { color:var(--pale-green); }
+.glyph-wall p:last-child { color:var(--pale-blue); border-bottom:1px solid var(--dark-border); }
+
+.download-section { display:grid; grid-template-columns:1fr 1.25fr; gap:8vw; padding:130px 3vw; }
+.download-heading h2 { margin:50px 0 35px; font-size:clamp(37.12px,4.48vw,66.56px); line-height:.9; letter-spacing:normal; }
+.download-heading>p:last-child { max-width:540px; font-size:16px; line-height:1.6; }
+.download-list { border-top:1px solid var(--border); }
+.download-list article { display:grid; grid-template-columns:45px 1fr auto; gap:18px; align-items:center; padding:26px 0; border-bottom:1px solid var(--border); }
+.download-index { font-size:10px; font-weight:800; }
+.download-list h3 { margin:0 0 5px; color:color-mix(in srgb,var(--accent) 70%,#000); font-size:clamp(27px,3vw,46px); font-weight:700; letter-spacing:normal; }
+.download-list p { margin:0; color:var(--muted); font-size:11px; text-transform:uppercase; }
+.download-list a { display:flex; min-width:155px; justify-content:space-between; align-items:center; padding:13px 0; border-block:1px solid var(--border); font-size:11px; font-weight:800; text-transform:uppercase; }
+.download-list a:hover { background:var(--text); color:var(--on-dark); padding-inline:10px; }
+
+.credits { padding:85px 3vw; border-top:1px solid var(--border); }
+.credit-grid { display:grid; grid-template-columns:1fr 1fr; gap:8vw; margin-top:50px; }
+.credit-grid>p { max-width:620px; font-size:18px; line-height:1.55; }
+.credit-grid>div { display:grid; grid-template-columns:1fr 1fr; gap:0 30px; }
+.credit-copy-link { border-bottom:1px solid currentColor; font-weight:700; }
+.credit-grid>div a { padding:13px 0; border-bottom:1px solid var(--border); font-size:12px; font-weight:700; }
+footer { display:grid; grid-template-columns:1fr 1fr auto; align-items:end; gap:30px; padding:38px 3vw; background:var(--text); color:var(--on-dark); }
+footer p,footer>a:last-child { margin:0; font-size:11px; }
+footer .footer-meta { color:var(--dark-muted); font-size:14.3px; }
+
+@media (max-width:900px) {
+  .hero { min-height:760px; }
+  .section-heading,.families-intro,.story-head,.download-section { grid-template-columns:1fr; }
+  .section-heading,.story-head { gap:40px; }
+  .families-intro>p:last-child { grid-column:1; }
+  .tester-controls { grid-template-columns:1fr 1fr; }
+  .tester-controls>*,.tester-controls>*:last-child { border-right:1px solid var(--dark-border); border-bottom:1px solid var(--dark-border); }
+  .tester-controls>*:nth-child(even) { border-right:0; }
+  .tester-controls>*:last-child { grid-column:1/3; border-right:0; border-bottom:0; min-height:50px; }
+  .stat-grid { grid-template-columns:1fr; }
+  .stat-grid article { min-height:auto; border-right:0; border-bottom:1px solid var(--dark-border); }
+  .stat-grid article:last-child { border-bottom:0; }
+  .stat-grid strong { margin-bottom:25px; }
+  .download-section { gap:70px; }
+  .feature-card { grid-column:1/-1; min-height:500px; }
+}
+@media (max-width:680px) {
+  .topbar { padding:18px 20px; }
+  .topbar nav { gap:13px; }
+  .topbar nav a:nth-child(2) { display:none; }
+  .hero { min-height:650px; padding-inline:20px; }
+  .hero h1 { margin-top:48px; }
+  .hero-copy { margin-top:48px; }
+  .hero-cta { width:100%; }
+  .family-marquee { margin-top:55px; }
+  .compare-section,.families-intro,.biology-brief,.family-story,.glyph-section,.download-section,.credits { padding-inline:20px; }
+  .biology-brief { grid-template-columns:1fr; }
+  .feature-card { min-height:auto; padding:22px; }
+  .feature-demo { min-height:160px; margin:32px 0; }
+  .italic-demo>div { grid-template-columns:72px 1fr; gap:10px; }
+  .weight-specimen { padding-block:10px 12px; }
+  .family-tabs { grid-template-columns:1fr; }
+  .family-tabs button { border-right:0; border-bottom:1px solid var(--dark-border); }
+  .family-tabs button:last-child { border-bottom:0; }
+  .tester-text textarea { width:100%; padding-top:42px; }
+  .preset-list { left:20px; right:auto; top:48px; }
+  .comparison-stage.overlay .font-pane+ .font-pane { border-top:0; }
+  .specimen-grid { grid-template-columns:1fr; }
+  .specimen,.specimen:nth-child(even),.specimen:nth-last-child(-n+2) { min-height:310px; border-right:0; border-bottom:1px solid var(--border); }
+  .specimen.specimen-lead { min-height:410px; }
+  .specimen.specimen-proposal { min-height:450px; }
+  .specimen:last-child { border-bottom:0; }
+  .weight-family { width:100%; }
+  .weight-heading,.weight-row { grid-template-columns:42px 80px 1fr; gap:8px; }
+  .weight-heading span:last-child { display:none; }
+  .weight-heading span:first-child { grid-column:1/3; }
+  .weight-row>span:nth-child(3) { font-size:14.4px; text-align:right; }
+  .credit-grid { grid-template-columns:1fr; }
+  .download-list article { grid-template-columns:30px 1fr; }
+  .download-list a { grid-column:2; }
+  footer { grid-template-columns:1fr; align-items:start; padding:35px 20px; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none!important; } }

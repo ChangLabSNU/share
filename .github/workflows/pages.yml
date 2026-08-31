@@ -1,0 +1,70 @@
+name: Deploy shared sites
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "fonts/**"
+      - "pages/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: fonts/package-lock.json
+
+      - name: Install dependencies
+        working-directory: fonts
+        run: npm ci
+
+      - name: Lint
+        working-directory: fonts
+        run: npm run lint
+
+      - name: Build and test
+        working-directory: fonts
+        run: npm test
+
+      - name: Assemble Pages artifact
+        run: |
+          mkdir -p publish/fonts
+          cp -a pages/. publish/
+          cp -a fonts/dist/client/. publish/fonts/
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: publish
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
