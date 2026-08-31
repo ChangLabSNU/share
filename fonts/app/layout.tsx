@@ -3,6 +3,7 @@ import { siteMetadata } from "./content";
 import "./globals.css";
 
 const siteUrl = "https://qbio.io/share/fonts";
+const socialImageUrl = `${siteUrl}/og.png?v=20260831`;
 const { title, description, socialImageAlt } = siteMetadata;
 
 export const dynamic = "force-static";
@@ -17,13 +18,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
     url: `${siteUrl}/`,
-    images: [{ url: `${siteUrl}/og.png`, width: 1200, height: 630, alt: socialImageAlt }],
+    images: [{ url: socialImageUrl, width: 1200, height: 630, alt: socialImageAlt }],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: [`${siteUrl}/og.png`],
+    images: [socialImageUrl],
   },
 };
 
