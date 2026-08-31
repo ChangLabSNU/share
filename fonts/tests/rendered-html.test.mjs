@@ -49,9 +49,9 @@ test("statically exports the QBio Fonts showcase", async () => {
   assert.match(html, /SNU Appendard/);
   assert.match(html, /SNU Sprout/);
   assert.doesNotMatch(html, /SNU Sprout Sans|SNUSproutSans/);
-  assert.match(html, /github\.com\/hyeshik\/snu-edge\/releases\/download\/v0\.6\.0\/SNUEdge-0\.6\.0\.zip/);
-  assert.match(html, /github\.com\/hyeshik\/snu-sprout\/releases\/download\/v0\.9\.0\/SNUSprout-0\.9\.0\.zip/);
-  assert.match(html, /github\.com\/hyeshik\/snu-appendard\/releases\/download\/v0\.6\.0\/SNUAppendard-0\.6\.0\.zip/);
+  assert.match(html, /github\.com\/hyeshik\/snu-edge\/releases\/download\/v0\.6\.1\/SNUEdge-0\.6\.1\.zip/);
+  assert.match(html, /github\.com\/hyeshik\/snu-sprout\/releases\/download\/v0\.9\.1\/SNUSprout-0\.9\.1\.zip/);
+  assert.match(html, /github\.com\/hyeshik\/snu-appendard\/releases\/download\/v0\.6\.1\/SNUAppendard-0\.6\.1\.zip/);
   assert.match(html, /SNU Edge/);
   assert.match(html, /어펜다드/);
   assert.match(html, /새싹/);
@@ -233,7 +233,7 @@ test("SNU Sprout 0.9 exposes every Roman and Italic weight", async () => {
   ];
 
   assert.match(content, /weights: \[100, 300, 400, 500, 600, 700, 800, 900\]/);
-  assert.match(content, /download: "https:\/\/github\.com\/hyeshik\/snu-sprout\/releases\/download\/v0\.9\.0\/SNUSprout-0\.9\.0\.zip"/);
+  assert.match(content, /download: "https:\/\/github\.com\/hyeshik\/snu-sprout\/releases\/download\/v0\.9\.1\/SNUSprout-0\.9\.1\.zip"/);
   assert.doesNotMatch(content, /250: "Thin"/);
 
   for (const [name, weight] of weights) {
