@@ -10,8 +10,7 @@ test("statically exports the QBio Fonts showcase", async () => {
   assert.match(html, /생물학자를 위한/);
   assert.match(html, /true italic/i);
   assert.match(html, /리듬감/);
-  assert.match(html, /3 OF 4 FAMILIES/);
-  assert.match(html, /ALL 4 FAMILIES/);
+  assert.match(html, /ALL 3 FAMILIES/);
   assert.match(html, />NANUMSQUARE</);
   assert.match(html, /SNU EDGE \(FROM MONTSERRAT\)/);
   assert.match(html, /Helicase는 종종 짧은 이중 가닥 영역에 결합하고/);
@@ -49,24 +48,17 @@ test("statically exports the QBio Fonts showcase", async () => {
 
   assert.match(html, /SNU Appendard/);
   assert.match(html, /SNU Sprout/);
-  assert.match(html, /SNU Jaha/);
   assert.doesNotMatch(html, /SNU Sprout Sans|SNUSproutSans/);
   assert.match(html, /github\.com\/hyeshik\/snu-edge\/releases\/download\/v0\.6\.1\/SNUEdge-0\.6\.1\.zip/);
   assert.match(html, /github\.com\/hyeshik\/snu-sprout\/releases\/download\/v0\.9\.1\/SNUSprout-0\.9\.1\.zip/);
   assert.match(html, /github\.com\/hyeshik\/snu-appendard\/releases\/download\/v0\.6\.1\/SNUAppendard-0\.6\.1\.zip/);
-  assert.match(html, /\/share\/fonts\/downloads\/SNUJaha-0\.1\.0\.zip/);
   assert.match(html, /SNU Edge/);
   assert.match(html, /어펜다드/);
   assert.match(html, /새싹/);
   assert.match(html, /엣지/);
-  assert.match(html, /자하/);
   assert.match(html, /스누 엣지/);
   assert.match(html, /스누 새싹/);
   assert.match(html, /스누 어펜다드/);
-  assert.match(html, /스누 자하/);
-  assert.match(html, /자하연의 고요한 운치/);
-  assert.match(html, /RIDIBatang/);
-  assert.match(html, /Roboto Serif/);
   assert.match(html, /WEIGHT FAMILY/);
   assert.match(html, /제목·표제/);
   assert.match(html, /부분 강조/);
@@ -141,26 +133,23 @@ test("comparison panes use each unmodified source family end to end", async () =
   const edgeIndex = content.indexOf('id: "edge"');
   const sproutIndex = content.indexOf('id: "sprout"');
   const appendardIndex = content.indexOf('id: "appendard"');
-  const jahaIndex = content.indexOf('id: "jaha"');
-  assert.ok(edgeIndex < sproutIndex && sproutIndex < appendardIndex && appendardIndex < jahaIndex);
+  assert.ok(edgeIndex < sproutIndex && sproutIndex < appendardIndex);
   assert.match(page, /useState<FamilyId>\("edge"\)/);
   assert.match(page, /\[tracking, setTracking\] = useState\(0\)/);
   assert.doesNotMatch(page, /function chooseFamily\(next: Family\) \{[^}]*setSample/);
   const familyType = content.match(/export type Family = \{[\s\S]*?\n\};/)?.[0] ?? "";
   assert.doesNotMatch(familyType, /sample:/);
   assert.doesNotMatch(css, /letter-spacing:-/);
-  assert.match(page, /families\.map\(\(item, index\) =>/);
+  assert.match(page, /\{families\[0\]\.shortName\}/);
 
   assert.match(content, /italicUnavailable: "[^"]+"/);
   assert.match(content, /originalLabel: "Pretendard"/);
   assert.match(content, /originalLabel: "LINE Seed Sans KR"/);
   assert.match(content, /originalLabel: "NanumSquare"/);
-  assert.match(content, /originalLabel: "RIDIBatang"/);
-  assert.match(page, /family === "jaha"\) return <span className="source-jaha">/);
   assert.match(page, /family === "appendard"\) return <span className="source-pretendard">/);
   assert.match(page, /family === "sprout"\) return <span className="source-sprout">/);
   assert.match(page, /return <span className="source-nanumsquare">/);
-  assert.match(css, /\.font-appendard,\.font-sprout,\.font-edge,\.font-jaha \{ font-synthesis:none; \}/);
+  assert.match(css, /\.font-appendard,\.font-sprout,\.font-edge \{ font-synthesis:none; \}/);
   assert.match(css, /\.family-marquee \{[^}]*align-items:baseline;/);
   assert.match(css, /\.source-pretendard \{[^}]*font-style:normal; font-synthesis:none; \}/);
   assert.match(css, /\.source-sprout \{[^}]*font-style:normal; font-synthesis:none; \}/);
@@ -168,7 +157,6 @@ test("comparison panes use each unmodified source family end to end", async () =
   assert.match(css, /SNUAppendard-Italic\.woff2/);
   assert.doesNotMatch(css, /SNUSproutSans|SNUAppendard-RegularItalic/);
   assert.match(css, /\.source-nanumsquare \{[^}]*font-style:normal; font-synthesis:none; \}/);
-  assert.match(css, /\.source-jaha \{[^}]*font-style:normal; font-synthesis:none; \}/);
 });
 
 test("comparison specimens stack vertically at the reduced default size", async () => {
@@ -212,12 +200,11 @@ test("all declared webfonts and public assets exist", async () => {
 
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   const fontPaths = [...css.matchAll(/url\("\/share\/fonts(\/fonts\/[^"]+)"\)/g)].map((match) => match[1].split("?")[0]);
-  assert.equal(fontPaths.length, 70);
+  assert.equal(fontPaths.length, 62);
 
   const publicAssets = [
     ...fontPaths,
     "/og.png",
-    "/downloads/SNUJaha-0.1.0.zip",
   ];
 
   for (const asset of publicAssets) {
@@ -257,32 +244,6 @@ test("SNU Sprout 0.9 exposes every Roman and Italic weight", async () => {
   }
 });
 
-test("SNU Jaha exposes seven Roman weights without synthetic italic", async () => {
-  const content = await readFile(new URL("../app/content.ts", import.meta.url), "utf8");
-  const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
-  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
-  const weights = [
-    ["Thin", 100],
-    ["Light", 300],
-    ["Regular", 400],
-    ["Medium", 500],
-    ["SemiBold", 600],
-    ["Bold", 700],
-    ["ExtraBold", 800],
-  ];
-
-  assert.match(content, /id: "jaha"[\s\S]*?weights: \[100, 300, 400, 500, 600, 700, 800\],[\s\S]*?hasItalic: false/);
-  assert.match(page, /disabled=\{!family\.hasItalic\}/);
-  assert.match(page, /if \(!next\.hasItalic\) setItalic\(false\)/);
-  assert.match(css, /RIDIBatang\.woff2/);
-  assert.doesNotMatch(css, /SNUJaha-[^"\n]*Italic\.woff2/);
-
-  for (const [name, weight] of weights) {
-    const roman = new RegExp(`SNUJaha-${name}\\.woff2"\\) format\\("woff2"\\); font-weight: ${weight}; font-style: normal`);
-    assert.match(css, roman);
-  }
-});
-
 test("font versions are omitted from visible family metadata", async () => {
   const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
   const content = await readFile(new URL("../app/content.ts", import.meta.url), "utf8");
@@ -307,14 +268,13 @@ test("site theme uses the biological family palette", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   const content = await readFile(new URL("../app/content.ts", import.meta.url), "utf8");
 
-  for (const color of ["#15836d", "#6f33d8", "#2864dc", "#8f4c69", "#e64a9b", "#172033", "#657080", "#d8dde6", "#eef4ff", "#edf8f5", "#f8f0f4", "#ffffff"]) {
+  for (const color of ["#15836d", "#6f33d8", "#2864dc", "#e64a9b", "#172033", "#657080", "#d8dde6", "#eef4ff", "#edf8f5", "#ffffff"]) {
     assert.match(css, new RegExp(color));
   }
 
   assert.match(css, /--edge:#6f33d8/);
   assert.match(css, /--sprout:#15836d/);
   assert.match(css, /--appendard:#2864dc/);
-  assert.match(css, /--jaha:#8f4c69/);
   assert.match(css, /--pink:#e64a9b/);
   assert.match(css, /--pale-blue:#eef4ff/);
   assert.match(css, /--pale-green:#edf8f5/);
@@ -322,9 +282,8 @@ test("site theme uses the biological family palette", async () => {
   assert.match(content, /accent: "#6F33D8"/);
   assert.match(content, /accent: "#15836D"/);
   assert.match(content, /accent: "#2864DC"/);
-  assert.match(content, /accent: "#8F4C69"/);
   assert.match(page, /<span className="hero-kicker">\{siteContent\.hero\.titleLines\[0\]\}<\/span>/);
-  assert.match(page, /index < families\.length - 1 && <i aria-hidden="true">×<\/i>/);
+  assert.equal((page.match(/<i aria-hidden="true">×<\/i>/g) ?? []).length, 2);
   assert.match(css, /\.family-marquee \{[^}]*color:var\(--text\);/);
   assert.match(css, /\.family-marquee i \{[^}]*color:var\(--pink\);/);
   assert.match(css, /\.hero-kicker \{[^}]*color:var\(--edge\);[^}]*font-family:"SNU Edge Web"[^}]*font-size:60%;[^}]*font-weight:300;/);
@@ -374,11 +333,9 @@ test("weight feature maps every family weight to one Korean and Latin glyph", as
   assert.match(content, /familyId: "edge"[^\n]*korean: "엣지있는스누엣지"[^\n]*latin: "EDGYEDGE"/);
   assert.match(content, /familyId: "sprout"[^\n]*korean: "다정스런스누새싹"[^\n]*latin: "MYSPROUT"/);
   assert.match(content, /familyId: "appendard"[^\n]*korean: "차분한스누어펜다드"[^\n]*latin: "APPENDARD"/);
-  assert.match(content, /familyId: "jaha"[^\n]*korean: "고요한스누자하"[^\n]*latin: "SNUJAHA"/);
   assert.match(content, /8 WEIGHTS \(FROM 4 WEIGHTS OF NANUMSQUARE\)/);
   assert.match(content, /8 WEIGHTS \(FROM 3 WEIGHTS OF LINE SEED SANS KR\)/);
   assert.match(content, /9 WEIGHTS \(ORIGINAL WEIGHTS\)/);
-  assert.match(content, /7 WEIGHTS \(FROM 1 WEIGHT OF RIDIBATANG\)/);
   assert.match(page, /characters\.length !== family\.weights\.length/);
   assert.match(page, /fontWeight: family\.weights\[index\]/);
   assert.match(page, /<WeightWord text=\{demo\.korean\} family=\{demoFamily\} lang="ko" \/>/);

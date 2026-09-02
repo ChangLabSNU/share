@@ -50,13 +50,6 @@
 @font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-ExtraBoldItalic.woff2") format("woff2"); font-weight: 800; font-style: italic; font-display: swap; }
 @font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; font-display: swap; }
 @font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-BlackItalic.woff2") format("woff2"); font-weight: 900; font-style: italic; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Thin.woff2") format("woff2"); font-weight: 100; font-style: normal; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Light.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-ExtraBold.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
 @font-face { font-family: "Pretendard Source"; src: url("/share/fonts/fonts/source/PretendardVariable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
 @font-face { font-family: "Inter Source"; src: url("/share/fonts/fonts/source/InterVariable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
 @font-face { font-family: "Inter Source"; src: url("/share/fonts/fonts/source/InterVariable-Italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
@@ -69,9 +62,8 @@
 @font-face { font-family: "NanumSquare Source"; src: url("/share/fonts/fonts/source/NanumSquareEB.woff2") format("woff2"); font-weight: 800 900; font-display: swap; }
 @font-face { font-family: "Montserrat Source"; src: url("/share/fonts/fonts/source/MontserratVariable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
 @font-face { font-family: "Montserrat Source"; src: url("/share/fonts/fonts/source/MontserratVariable-Italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
-@font-face { font-family: "RIDIBatang Source"; src: url("/share/fonts/fonts/jaha/RIDIBatang.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
 
-:root { --background:#ffffff; --text:#172033; --text-strong:#101827; --muted:#657080; --border:#d8dde6; --edge:#6f33d8; --sprout:#15836d; --appendard:#2864dc; --jaha:#8f4c69; --pink:#e64a9b; --pale-blue:#eef4ff; --pale-green:#edf8f5; --pale-violet:#f1ebfb; --pale-jaha:#f8f0f4; --on-dark:#fff; --dark-muted:rgba(255,255,255,.62); --dark-border:rgba(255,255,255,.2); }
+:root { --background:#ffffff; --text:#172033; --text-strong:#101827; --muted:#657080; --border:#d8dde6; --edge:#6f33d8; --sprout:#15836d; --appendard:#2864dc; --pink:#e64a9b; --pale-blue:#eef4ff; --pale-green:#edf8f5; --pale-violet:#f1ebfb; --on-dark:#fff; --dark-muted:rgba(255,255,255,.62); --dark-border:rgba(255,255,255,.2); }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body { margin:0; background:var(--background); color:var(--text); font-family:Arial,"Apple SD Gothic Neo",sans-serif; }
@@ -81,10 +73,9 @@ button { color:inherit; }
 a { color:inherit; text-decoration:none; }
 ::selection { background:var(--sprout); color:var(--on-dark); }
 .font-appendard { font-family:"SNU Appendard Web",sans-serif; }
-.font-appendard,.font-sprout,.font-edge,.font-jaha { font-synthesis:none; }
+.font-appendard,.font-sprout,.font-edge { font-synthesis:none; }
 .font-sprout { font-family:"SNU Sprout Web",sans-serif; }
 .font-edge { font-family:"SNU Edge Web",sans-serif; }
-.font-jaha { font-family:"SNU Jaha Web",serif; }
 
 .topbar { position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:22px 3vw; border-bottom:1px solid var(--border); background:rgba(255,255,255,.92); backdrop-filter:blur(14px); font-size:12px; font-weight:750; text-transform:uppercase; }
 .wordmark { font-size:20px; font-weight:800; letter-spacing:normal; text-transform:none; }
@@ -106,7 +97,7 @@ a { color:inherit; text-decoration:none; }
 .compare-section { --family-accent:var(--edge); background:var(--text); color:var(--on-dark); padding:120px 3vw 130px; }
 .section-heading { display:grid; grid-template-columns:1fr 2fr; margin-bottom:80px; }
 .section-heading h2 { margin:0; font-size:clamp(33.28px,4.608vw,69.12px); line-height:.98; letter-spacing:normal; }
-.family-tabs { display:grid; grid-template-columns:repeat(4,1fr); margin-bottom:0; border:1px solid var(--dark-border); }
+.family-tabs { display:grid; grid-template-columns:repeat(3,1fr); margin-bottom:0; border:1px solid var(--dark-border); }
 .family-tabs button { display:flex; gap:16px; align-items:center; padding:18px 20px; border:0; border-right:1px solid var(--dark-border); background:transparent; color:var(--dark-muted); cursor:pointer; text-align:left; }
 .family-tabs button:last-child { border-right:0; }
 .family-tabs button span { font-size:10px; }
@@ -128,7 +119,6 @@ a { color:inherit; text-decoration:none; }
 .button-control { display:grid; grid-template-columns:1fr 1fr; gap:4px; }
 .button-control button { border:1px solid var(--dark-border); background:transparent; color:var(--dark-muted); cursor:pointer; font-size:11px; }
 .button-control button.active { border-color:var(--family-accent); background:var(--family-accent); color:var(--on-dark); }
-.button-control button:disabled { opacity:.32; cursor:not-allowed; }
 .comparison-stage { display:grid; grid-template-columns:1fr; border-inline:1px solid var(--dark-border); border-bottom:1px solid var(--dark-border); }
 .font-pane { min-width:0; min-height:132px; padding:22px; overflow:hidden; }
 .font-pane+ .font-pane { border-top:1px solid var(--dark-border); }
@@ -142,7 +132,6 @@ a { color:inherit; text-decoration:none; }
 .source-pretendard { font-family:"Pretendard Source",sans-serif; font-style:normal; font-synthesis:none; }
 .source-sprout { font-family:"LINE Seed Source",sans-serif; font-style:normal; font-synthesis:none; }
 .source-nanumsquare { font-family:"NanumSquare Source",sans-serif; font-style:normal; font-synthesis:none; }
-.source-jaha { font-family:"RIDIBatang Source",serif; font-style:normal; font-synthesis:none; }
 .comparison-stage.overlay { position:relative; display:grid; grid-template-columns:1fr; }
 .comparison-stage.overlay .font-pane { grid-area:1/1; border:0; }
 .comparison-stage.overlay .original-pane { z-index:2; pointer-events:none; }
@@ -192,13 +181,11 @@ a { color:inherit; text-decoration:none; }
 .story-edge { background:var(--pale-violet); }
 .story-sprout { background:var(--pale-green); }
 .story-appendard { background:var(--pale-blue); }
-.story-jaha { background:var(--pale-jaha); }
 .story-head { display:grid; grid-template-columns:1fr 2fr; }
 .story-index { margin:0; font-size:12px; font-weight:800; }
 .story-source { margin:0 0 24px; font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
 .story-head h2 { margin:0; color:var(--accent); font-size:clamp(57px,8vw,122px); line-height:.88; letter-spacing:normal; }
 .story-sprout .story-head h2 { font-weight:700; }
-.story-jaha .story-head h2 { font-weight:700; }
 .story-head h3 { max-width:840px; margin:40px 0 25px; color:var(--text); font-size:clamp(31px,4vw,62px); line-height:1.03; letter-spacing:normal; }
 .story-summary { max-width:620px; margin-left:auto; font-size:19px; line-height:1.6; }
 .use-list { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:8px; max-width:620px; margin:24px 0 0 auto; padding:0; list-style:none; }
@@ -251,8 +238,7 @@ a { color:inherit; text-decoration:none; }
 .glyph-wall p { margin:0; border-top:1px solid var(--dark-border); font-size:clamp(34px,6.3vw,98px); line-height:1.25; white-space:nowrap; letter-spacing:normal; }
 .glyph-wall p:nth-child(2) { color:var(--pale-violet); font-style:italic; }
 .glyph-wall p:nth-child(3) { color:var(--pale-green); }
-.glyph-wall p:nth-child(4) { color:var(--pale-blue); }
-.glyph-wall p:last-child { color:var(--pale-jaha); border-bottom:1px solid var(--dark-border); }
+.glyph-wall p:last-child { color:var(--pale-blue); border-bottom:1px solid var(--dark-border); }
 
 .download-section { display:grid; grid-template-columns:1fr 1.25fr; gap:8vw; padding:130px 3vw; }
 .download-heading h2 { margin:50px 0 35px; font-size:clamp(37.12px,4.48vw,66.56px); line-height:.9; letter-spacing:normal; }
