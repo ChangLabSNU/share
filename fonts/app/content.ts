@@ -1,7 +1,7 @@
 // Edit the site's copy and release information in this file.
 // Layout, font rendering, and Compare Lab behavior live in page.tsx.
 
-export type FamilyId = "appendard" | "sprout" | "edge";
+export type FamilyId = "appendard" | "sprout" | "edge" | "jaha";
 
 export type Family = {
   id: FamilyId;
@@ -11,6 +11,7 @@ export type Family = {
   source: string;
   originalLabel: string;
   weights: number[];
+  hasItalic: boolean;
   className: string;
   accent: string;
   tagline: string;
@@ -27,7 +28,7 @@ export type PresentationBullet = {
 
 export const siteMetadata = {
   title: "QBio Fonts",
-  description: "학명과 유전자명, Figure와 발표 자료를 위해 italic·weight·글자폭을 다듬은 생물학 연구자용 한글 폰트 세 가족.",
+  description: "학명과 유전자명, Figure와 발표 자료, 긴 연구 문서를 위해 다듬은 생물학 연구자용 한글 폰트 네 가족.",
   socialImageAlt: "QBio Fonts",
 };
 
@@ -40,6 +41,7 @@ export const families: Family[] = [
     source: "Derived from NanumSquare and Montserrat",
     originalLabel: "NanumSquare",
     weights: [100, 300, 400, 500, 600, 700, 800, 900],
+    hasItalic: true,
     className: "font-edge",
     accent: "#6F33D8",
     tagline: "산뜻하고 감각적인 슬라이드나 강조가 필요한 박스 내용에.",
@@ -60,6 +62,7 @@ export const families: Family[] = [
     source: "Derived from LINE Seed Sans KR & EN",
     originalLabel: "LINE Seed Sans KR",
     weights: [100, 300, 400, 500, 600, 700, 800, 900],
+    hasItalic: true,
     className: "font-sprout",
     accent: "#15836D",
     tagline: "둥글둥글 친근하지만, 정보는 단정하게 정리됩니다.",
@@ -80,6 +83,7 @@ export const families: Family[] = [
     source: "Derived from Pretendard and Inter",
     originalLabel: "Pretendard",
     weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+    hasItalic: true,
     className: "font-appendard",
     accent: "#2864DC",
     tagline: "중립적인 인상과 신뢰감으로, 긴 본문을 안정적이고 읽기 좋게.",
@@ -91,6 +95,27 @@ export const families: Family[] = [
     ],
     uses: ["논문 본문", "보고서 본문", "Figure label", "프리젠테이션"],
     download: "https://github.com/hyeshik/snu-appendard/releases/download/v0.6.1/SNUAppendard-0.6.1.zip",
+  },
+  {
+    id: "jaha",
+    name: "SNU Jaha",
+    shortName: "자하",
+    displayName: "스누 자하",
+    source: "Derived from RIDIBatang and Roboto Serif",
+    originalLabel: "RIDIBatang",
+    weights: [100, 300, 400, 500, 600, 700, 800],
+    hasItalic: false,
+    className: "font-jaha",
+    accent: "#8F4C69",
+    tagline: "자하연의 고요한 운치를 닮은, 오래 읽어도 편안한 연구 문서용 바탕체.",
+    summary: "리디바탕의 단정하고 따뜻한 한글 골격에 Roboto Serif 14pt의 정교한 라틴 문자를 맞춰, 한국어와 영문이 긴 문단 속에서 한결같은 호흡으로 흐릅니다. 일곱 가지 굵기와 고정폭 숫자로 논문·연구계획서·학위논문처럼 오래 읽는 문서의 본문부터 제목·표·인용까지 차분하게 이어줍니다.",
+    stats: [
+      { value: "1 → 7", label: "본문에서 표제까지", note: "리디바탕 Regular 한 굵기를 Thin부터 ExtraBold까지 일곱 단계로 확장했습니다" },
+      { value: "14pt", label: "본문용 영문 조화", note: "Roboto Serif 14pt의 라틴 문자와 문장부호를 한글의 차분한 결에 맞췄습니다" },
+      { value: "560", label: "고정폭 숫자", note: "0–9의 폭을 일정하게 맞춰 표·통계·참고문헌의 숫자 열을 가지런히 정리합니다" },
+    ],
+    uses: ["논문·학위논문 본문", "연구계획서", "보고서", "서론·초록", "표·참고문헌"],
+    download: "/share/fonts/downloads/SNUJaha-0.1.0.zip",
   },
 ];
 
@@ -126,12 +151,12 @@ export const siteContent = {
   changes: {
     sectionNumber: "01 / WHAT WE CHANGED",
     titleLines: ["생물학 문서에 꼭 필요한", "네 가지를 바꿨습니다."],
-    introduction: "실제 연구 문서에서도 멋진 한글 글꼴을 쓸 수 있도록 문제점들을 손봤습니다. 학술 문서에 필수적인 이탤릭, 영문만 길게 써도 어울리는 영문 글꼴, 산뜻한 발표자료를 위한 다양한 굵기, 한글·영문을 섞어 써도 잘 어울리는 간격을 갖도록 했습니다. 스누 엣지는 산뜻한 제목과 발표에, 스누 새싹은 친근하고 정돈된 포인트 강조에, 스누 어펜다드는 중립적이고 신뢰감 있는 본문에 맞도록 각자의 역할을 갖게 됐습니다.",
+    introduction: "실제 연구 문서에서도 멋진 한글 글꼴을 쓸 수 있도록 문제점들을 손봤습니다. 학술 문서에 필수적인 이탤릭, 영문만 길게 써도 어울리는 영문 글꼴, 산뜻한 발표자료를 위한 다양한 굵기, 한글·영문을 섞어 써도 잘 어울리는 간격을 갖도록 했습니다. 스누 엣지는 산뜻한 제목과 발표에, 스누 새싹은 친근하고 정돈된 포인트 강조에, 스누 어펜다드는 중립적이고 신뢰감 있는 본문에, 스누 자하는 자하연의 고요한 분위기를 담은 긴 논문과 제안서에 맞도록 각자의 역할을 갖게 됐습니다.",
     ariaLabel: "생물학 연구를 위한 네 가지 개조 원칙",
     features: {
       italic: {
         number: "01 / ITALIC",
-        scope: "ALL 3 FAMILIES",
+        scope: "3 OF 4 FAMILIES",
         demos: {
           edgeLabel: "EDGE",
           edgeText: "<i>MALAT1</i>은 세포질로 수송되면서",
@@ -145,11 +170,12 @@ export const siteContent = {
       },
       weight: {
         number: "02 / WEIGHT",
-        scope: "ALL 3 FAMILIES",
+        scope: "ALL 4 FAMILIES",
         demos: [
           { familyId: "edge", label: "EDGE · 8 WEIGHTS (FROM 4 WEIGHTS OF NANUMSQUARE)", korean: "엣지있는스누엣지", latin: "EDGYEDGE" },
           { familyId: "sprout", label: "SPROUT · 8 WEIGHTS (FROM 3 WEIGHTS OF LINE SEED SANS KR)", korean: "다정스런스누새싹", latin: "MYSPROUT" },
           { familyId: "appendard", label: "APPENDARD · 9 WEIGHTS (ORIGINAL WEIGHTS)", korean: "차분한스누어펜다드", latin: "APPENDARD" },
+          { familyId: "jaha", label: "JAHA · 7 WEIGHTS (FROM 1 WEIGHT OF RIDIBATANG)", korean: "고요한스누자하", latin: "SNUJAHA" },
         ],
         // Use [wght=100]...[/wght] through [wght=900]...[/wght] to mix weights safely.
         titleLines: ["[wght=500]리듬감[/wght] [wght=300]살리는[/wght] [wght=900]두[/wght][wght=700]께.[/wght]"],
@@ -260,6 +286,7 @@ export const siteContent = {
     weightFamily: {
       heading: "WEIGHT FAMILY",
       stylesSuffix: "WEIGHTS × 2 STYLES",
+      romanStylesSuffix: "WEIGHTS · ROMAN",
       regularSample: "접합부 5′ 쪽 20–24 nt 위치에 결합하는 exon junction complex (EJC)",
     },
   },
@@ -272,11 +299,12 @@ export const siteContent = {
     sproutBetween: "에서",
     sproutTail: "mRNA splicing을 측정합니다.",
     appendard: "DMS-MaPseq로 transcript별 RNA secondary structure를 비교합니다.",
+    jaha: "RNA 구조와 번역 효율의 관계를 긴 연구 문서에서 차분하게 서술합니다.",
   },
   download: {
     sectionNumber: "04 / DOWNLOAD",
-    titleLines: ["연구를 잘 전달하는", "세 가지 글꼴."],
-    copy: "논문 초고, 연구노트, 내부 보고서, 발표용 슬라이드, 그림에 바로 사용할 수 있습니다. 모든 폰트는 SIL Open Font License 1.1에 따라 제공되며, README와 원본 저작권 고지를 함께 내려받을 수 있습니다.",
+    titleLines: ["연구를 잘 전달하는", "네 가지 글꼴."],
+    copy: "논문 초고, 연구노트, 내부 보고서, 발표용 슬라이드, 그림에 바로 사용할 수 있습니다. 네 폰트 모두 SIL Open Font License 1.1에 따라 제공되며, README와 원본 저작권 고지를 함께 내려받을 수 있습니다.",
     format: "OTF",
     stylesLabel: "styles",
     button: "Download ZIP",
@@ -298,6 +326,8 @@ export const siteContent = {
       { href: "https://seed.line.me/index_kr.html", label: "LINE Seed ↗" },
       { href: "https://hangeul.naver.com/font", label: "NanumSquare ↗" },
       { href: "https://fonts.google.com/specimen/Montserrat", label: "Montserrat ↗" },
+      { href: "https://ridicorp.com/ridibatang/", label: "RIDIBatang ↗" },
+      { href: "https://github.com/googlefonts/roboto-serif", label: "Roboto Serif ↗" },
     ],
   },
   footer: {
