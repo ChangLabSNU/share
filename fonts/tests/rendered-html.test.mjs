@@ -10,7 +10,6 @@ test("statically exports the QBio Fonts showcase", async () => {
   assert.match(html, /생물학자를 위한/);
   assert.match(html, /true italic/i);
   assert.match(html, /리듬감/);
-  assert.match(html, /3 OF 4 FAMILIES/);
   assert.match(html, /ALL 4 FAMILIES/);
   assert.match(html, />NANUMSQUARE</);
   assert.match(html, /SNU EDGE \(FROM MONTSERRAT\)/);
@@ -23,6 +22,7 @@ test("statically exports the QBio Fonts showcase", async () => {
   assert.match(html, /<p class="font-edge"><i>[^<]+<\/i>[^<]+<\/p>/);
   assert.match(html, /<p class="font-sprout">[^<]+<i>[^<]+<\/i>[^<]+<\/p>/);
   assert.match(html, /<p class="font-appendard"><i>[^<]+<\/i>[^<]+<\/p>/);
+  assert.match(html, /<p class="font-jaha"><i>[^<]+<\/i>[^<]+<\/p>/);
   assert.match(html, /LECTURE SLIDE/);
   assert.doesNotMatch(html, /PRESENTATION SLIDE/);
   assert.match(html, /Cap Analogs/);
@@ -54,7 +54,7 @@ test("statically exports the QBio Fonts showcase", async () => {
   assert.match(html, /github\.com\/hyeshik\/snu-edge\/releases\/download\/v0\.6\.1\/SNUEdge-0\.6\.1\.zip/);
   assert.match(html, /github\.com\/hyeshik\/snu-sprout\/releases\/download\/v0\.9\.1\/SNUSprout-0\.9\.1\.zip/);
   assert.match(html, /github\.com\/hyeshik\/snu-appendard\/releases\/download\/v0\.6\.1\/SNUAppendard-0\.6\.1\.zip/);
-  assert.match(html, /\/share\/fonts\/downloads\/SNUJaha-0\.1\.0\.zip/);
+  assert.match(html, /github\.com\/hyeshik\/snu-jaha\/releases\/download\/v0\.1\.0\/SNUJaha-0\.1\.0\.zip/);
   assert.match(html, /SNU Edge/);
   assert.match(html, /어펜다드/);
   assert.match(html, /새싹/);
@@ -212,12 +212,11 @@ test("all declared webfonts and public assets exist", async () => {
 
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   const fontPaths = [...css.matchAll(/url\("\/share\/fonts(\/fonts\/[^"]+)"\)/g)].map((match) => match[1].split("?")[0]);
-  assert.equal(fontPaths.length, 70);
+  assert.equal(fontPaths.length, 77);
 
   const publicAssets = [
     ...fontPaths,
     "/og.png",
-    "/downloads/SNUJaha-0.1.0.zip",
   ];
 
   for (const asset of publicAssets) {
@@ -257,9 +256,8 @@ test("SNU Sprout 0.9 exposes every Roman and Italic weight", async () => {
   }
 });
 
-test("SNU Jaha exposes seven Roman weights without synthetic italic", async () => {
+test("SNU Jaha exposes seven Roman and native italic weights", async () => {
   const content = await readFile(new URL("../app/content.ts", import.meta.url), "utf8");
-  const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   const weights = [
     ["Thin", 100],
@@ -271,15 +269,17 @@ test("SNU Jaha exposes seven Roman weights without synthetic italic", async () =
     ["ExtraBold", 800],
   ];
 
-  assert.match(content, /id: "jaha"[\s\S]*?weights: \[100, 300, 400, 500, 600, 700, 800\],[\s\S]*?hasItalic: false/);
-  assert.match(page, /disabled=\{!family\.hasItalic\}/);
-  assert.match(page, /if \(!next\.hasItalic\) setItalic\(false\)/);
+  assert.match(content, /id: "jaha"[\s\S]*?weights: \[100, 300, 400, 500, 600, 700, 800\]/);
+  assert.match(content, /download: "https:\/\/github\.com\/hyeshik\/snu-jaha\/releases\/download\/v0\.1\.0\/SNUJaha-0\.1\.0\.zip"/);
+  assert.match(content, /value: "520", label: "고정폭 숫자"/);
+  assert.doesNotMatch(content, /hasItalic|romanStylesSuffix/);
   assert.match(css, /RIDIBatang\.woff2/);
-  assert.doesNotMatch(css, /SNUJaha-[^"\n]*Italic\.woff2/);
 
   for (const [name, weight] of weights) {
     const roman = new RegExp(`SNUJaha-${name}\\.woff2"\\) format\\("woff2"\\); font-weight: ${weight}; font-style: normal`);
+    const italic = new RegExp(`SNUJaha-${name}Italic\\.woff2"\\) format\\("woff2"\\); font-weight: ${weight}; font-style: italic`);
     assert.match(css, roman);
+    assert.match(css, italic);
   }
 });
 
@@ -307,30 +307,39 @@ test("site theme uses the biological family palette", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   const content = await readFile(new URL("../app/content.ts", import.meta.url), "utf8");
 
-  for (const color of ["#15836d", "#6f33d8", "#2864dc", "#8f4c69", "#e64a9b", "#172033", "#657080", "#d8dde6", "#eef4ff", "#edf8f5", "#f8f0f4", "#ffffff"]) {
+  for (const color of ["#15836d", "#6f33d8", "#2864dc", "#e64a9b", "#172033", "#657080", "#d8dde6", "#eef4ff", "#edf8f5", "#fdeef5", "#f1ebfb", "#ffffff"]) {
     assert.match(css, new RegExp(color));
   }
 
-  assert.match(css, /--edge:#6f33d8/);
+  assert.match(css, /--edge:#e64a9b/);
   assert.match(css, /--sprout:#15836d/);
   assert.match(css, /--appendard:#2864dc/);
-  assert.match(css, /--jaha:#8f4c69/);
+  assert.match(css, /--jaha:#6f33d8/);
   assert.match(css, /--pink:#e64a9b/);
   assert.match(css, /--pale-blue:#eef4ff/);
   assert.match(css, /--pale-green:#edf8f5/);
-  assert.match(css, /--pale-violet:#f1ebfb/);
-  assert.match(content, /accent: "#6F33D8"/);
+  assert.match(css, /--pale-edge:#fdeef5/);
+  assert.match(css, /--pale-jaha:#f1ebfb/);
+  assert.match(content, /id: "edge"[\s\S]*?accent: "#E64A9B"/);
   assert.match(content, /accent: "#15836D"/);
   assert.match(content, /accent: "#2864DC"/);
-  assert.match(content, /accent: "#8F4C69"/);
+  assert.match(content, /id: "jaha"[\s\S]*?accent: "#6F33D8"/);
+  assert.match(css, /\.story-edge \{ background:var\(--pale-edge\); \}/);
+  assert.match(css, /\.story-jaha \{ background:var\(--pale-jaha\); \}/);
   assert.match(page, /<span className="hero-kicker">\{siteContent\.hero\.titleLines\[0\]\}<\/span>/);
   assert.match(page, /index < families\.length - 1 && <i aria-hidden="true">×<\/i>/);
   assert.match(css, /\.family-marquee \{[^}]*color:var\(--text\);/);
   assert.match(css, /\.family-marquee i \{[^}]*color:var\(--pink\);/);
-  assert.match(css, /\.hero-kicker \{[^}]*color:var\(--edge\);[^}]*font-family:"SNU Edge Web"[^}]*font-size:60%;[^}]*font-weight:300;/);
+  assert.match(css, /\.hero-kicker \{[^}]*color:var\(--jaha\);[^}]*font-family:"SNU Edge Web"[^}]*font-size:60%;[^}]*font-weight:300;/);
   assert.match(css, /\.hero h1 em \{[^}]*color:var\(--text-strong\);[^}]*font-family:"SNU Appendard Web"[^}]*font-weight:800;/);
   assert.match(css, /\.families-intro h2 \{[^}]*color:var\(--appendard\);/);
-  assert.match(css, /\.families-intro h2 i \{[^}]*color:var\(--text\);/);
+  assert.match(page, /<span className="changes-title-lead"><strong>\{siteContent\.changes\.title\.emphasis\}<\/strong>\{siteContent\.changes\.title\.continuation\}<\/span><i><strong>\{siteContent\.changes\.title\.secondLine\.emphasis\}<\/strong>\{siteContent\.changes\.title\.secondLine\.continuation\}<\/i>/);
+  assert.match(css, /\.families-intro h2 \.changes-title-lead \{[^}]*display:block;[^}]*margin-bottom:\.12em;/);
+  assert.match(css, /\.families-intro h2 \.changes-title-lead strong \{ font-weight:800; \}/);
+  assert.match(css, /\.families-intro h2 i \{[^}]*color:var\(--text\);[^}]*font-family:"SNU Jaha Web",serif;/);
+  assert.match(css, /\.families-intro h2 i strong \{ font-weight:600; \}/);
+  assert.match(css, /\.feature-latin \{[^}]*background:var\(--pale-jaha\);/);
+  assert.match(css, /\.feature-width \{[^}]*border-color:var\(--jaha\);[^}]*background:var\(--jaha\);/);
   assert.match(css, /\.original-pane \.sample-label b \{ color:var\(--border\); \}/);
   assert.match(css, /\.original-pane \.sample-text \{ color:var\(--border\); \}/);
   assert.match(css, /\.download-list h3 \{[^}]*font-weight:700;/);
@@ -362,6 +371,7 @@ test("italic feature demos honor only explicit i tags", async () => {
   assert.match(page, /<ItalicText text=\{feature\.italic\.demos\.edgeText\} \/>/);
   assert.match(page, /<ItalicText text=\{feature\.italic\.demos\.sproutText\} \/>/);
   assert.match(page, /<ItalicText text=\{feature\.italic\.demos\.appendardText\} \/>/);
+  assert.match(page, /<ItalicText text=\{feature\.italic\.demos\.jahaText\} \/>/);
   assert.doesNotMatch(page, /dangerouslySetInnerHTML/);
   assert.doesNotMatch(page, /<em>\{feature\.italic\.demos\./);
   assert.match(css, /\.italic-demo p \{[^}]*margin:0 0 -\.18em;[^}]*padding-bottom:\.18em;/);

@@ -11,7 +11,6 @@ export type Family = {
   source: string;
   originalLabel: string;
   weights: number[];
-  hasItalic: boolean;
   className: string;
   accent: string;
   tagline: string;
@@ -41,9 +40,8 @@ export const families: Family[] = [
     source: "Derived from NanumSquare and Montserrat",
     originalLabel: "NanumSquare",
     weights: [100, 300, 400, 500, 600, 700, 800, 900],
-    hasItalic: true,
     className: "font-edge",
-    accent: "#6F33D8",
+    accent: "#E64A9B",
     tagline: "산뜻하고 감각적인 슬라이드나 강조가 필요한 박스 내용에.",
     summary: "깔끔하면서도 심심하지 않은 센스있는 인상으로 제목·표제·섹션 제목·프리젠테이션·Figure label·박스 내용을 선명하게 만들어줍니다. 공간이 부족한 곳에서도 쓸 수 있게 한글 폭을 다듬고, 영문 가독성을 높이기 위해 라틴 문자를 Montserrat로 바꿨습니다. 이탤릭체가 제공되어, 학술 문서를 정확히 표현할 수 있습니다.",
     stats: [
@@ -62,7 +60,6 @@ export const families: Family[] = [
     source: "Derived from LINE Seed Sans KR & EN",
     originalLabel: "LINE Seed Sans KR",
     weights: [100, 300, 400, 500, 600, 700, 800, 900],
-    hasItalic: true,
     className: "font-sprout",
     accent: "#15836D",
     tagline: "둥글둥글 친근하지만, 정보는 단정하게 정리됩니다.",
@@ -83,7 +80,6 @@ export const families: Family[] = [
     source: "Derived from Pretendard and Inter",
     originalLabel: "Pretendard",
     weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-    hasItalic: true,
     className: "font-appendard",
     accent: "#2864DC",
     tagline: "중립적인 인상과 신뢰감으로, 긴 본문을 안정적이고 읽기 좋게.",
@@ -101,21 +97,20 @@ export const families: Family[] = [
     name: "SNU Jaha",
     shortName: "자하",
     displayName: "스누 자하",
-    source: "Derived from RIDIBatang and Roboto Serif",
+    source: "Derived from RIDIBatang and Roboto Serif 14pt",
     originalLabel: "RIDIBatang",
     weights: [100, 300, 400, 500, 600, 700, 800],
-    hasItalic: false,
     className: "font-jaha",
-    accent: "#8F4C69",
+    accent: "#6F33D8",
     tagline: "자하연의 고요한 운치를 닮은, 오래 읽어도 편안한 연구 문서용 바탕체.",
-    summary: "리디바탕의 단정하고 따뜻한 한글 골격에 Roboto Serif 14pt의 정교한 라틴 문자를 맞춰, 한국어와 영문이 긴 문단 속에서 한결같은 호흡으로 흐릅니다. 일곱 가지 굵기와 고정폭 숫자로 논문·연구계획서·학위논문처럼 오래 읽는 문서의 본문부터 제목·표·인용까지 차분하게 이어줍니다.",
+    summary: "리디바탕의 단정하고 따뜻한 한글 골격에 Roboto Serif 14pt의 정교한 라틴 문자와 native italic을 맞춰, 한국어와 영문이 긴 문단 속에서 한결같은 호흡으로 흐릅니다. 일곱 가지 굵기를 각각 roman과 italic로 제공하고 고정폭 숫자를 더해, 논문·연구계획서·학위논문처럼 오래 읽는 문서의 본문부터 제목·표·인용까지 차분하게 이어줍니다.",
     stats: [
       { value: "1 → 7", label: "본문에서 표제까지", note: "리디바탕 Regular 한 굵기를 Thin부터 ExtraBold까지 일곱 단계로 확장했습니다" },
-      { value: "14pt", label: "본문용 영문 조화", note: "Roboto Serif 14pt의 라틴 문자와 문장부호를 한글의 차분한 결에 맞췄습니다" },
-      { value: "560", label: "고정폭 숫자", note: "0–9의 폭을 일정하게 맞춰 표·통계·참고문헌의 숫자 열을 가지런히 정리합니다" },
+      { value: "/", label: "진짜 이탤릭", note: "Roboto Serif의 native italic을 이식해 학명·유전자명과 라틴어 표현을 정확히 조판합니다" },
+      { value: "520", label: "고정폭 숫자", note: "upright 0–9의 폭을 일정하게 맞춰 표·통계·참고문헌의 숫자 열을 가지런히 정리합니다" },
     ],
     uses: ["논문·학위논문 본문", "연구계획서", "보고서", "서론·초록", "표·참고문헌"],
-    download: "/share/fonts/downloads/SNUJaha-0.1.0.zip",
+    download: "https://github.com/hyeshik/snu-jaha/releases/download/v0.1.0/SNUJaha-0.1.0.zip",
   },
 ];
 
@@ -150,13 +145,20 @@ export const siteContent = {
   },
   changes: {
     sectionNumber: "01 / WHAT WE CHANGED",
-    titleLines: ["생물학 문서에 꼭 필요한", "네 가지를 바꿨습니다."],
+    title: {
+      emphasis: "생물학 문서",
+      continuation: "에 꼭 필요한",
+      secondLine: {
+        emphasis: "네 가지",
+        continuation: "를 바꿨습니다.",
+      },
+    },
     introduction: "실제 연구 문서에서도 멋진 한글 글꼴을 쓸 수 있도록 문제점들을 손봤습니다. 학술 문서에 필수적인 이탤릭, 영문만 길게 써도 어울리는 영문 글꼴, 산뜻한 발표자료를 위한 다양한 굵기, 한글·영문을 섞어 써도 잘 어울리는 간격을 갖도록 했습니다. 스누 엣지는 산뜻한 제목과 발표에, 스누 새싹은 친근하고 정돈된 포인트 강조에, 스누 어펜다드는 중립적이고 신뢰감 있는 본문에, 스누 자하는 자하연의 고요한 분위기를 담은 긴 논문과 제안서에 맞도록 각자의 역할을 갖게 됐습니다.",
     ariaLabel: "생물학 연구를 위한 네 가지 개조 원칙",
     features: {
       italic: {
         number: "01 / ITALIC",
-        scope: "3 OF 4 FAMILIES",
+        scope: "ALL 4 FAMILIES",
         demos: {
           edgeLabel: "EDGE",
           edgeText: "<i>MALAT1</i>은 세포질로 수송되면서",
@@ -164,9 +166,11 @@ export const siteContent = {
           sproutText: "Chang <i>et al.</i> (2025)에서는 새로운",
           appendardLabel: "APPENDARD",
           appendardText: "<i>X. laevis</i>의 초기 배아 추출액을",
+          jahaLabel: "JAHA",
+          jahaText: "<i>S. cerevisiae</i>의 mRNA decay를",
         },
         titleLines: ["제대로 된 글을 위한", "제대로 된 italic."],
-        copy: "스누 어펜다드에는 영문 원본의 italic을 이식하고, 스누 엣지는 italic이 있는 영문 글꼴로 전체를 교체했습니다. 스누 새싹은 한글은 바로 세우고 latin, 숫자, 기호만 10° 기울여, 학명, 유전자명과 라틴어 표현이 한국어 문장 안에서도 정확히 구분됩니다.",
+        copy: "스누 어펜다드와 스누 자하에는 영문 원본의 native italic을 이식하고, 스누 엣지는 italic이 있는 영문 글꼴로 전체를 교체했습니다. 스누 새싹은 한글은 바로 세우고 latin, 숫자, 기호만 10° 기울여, 학명, 유전자명과 라틴어 표현이 한국어 문장 안에서도 정확히 구분됩니다.",
       },
       weight: {
         number: "02 / WEIGHT",
@@ -286,7 +290,6 @@ export const siteContent = {
     weightFamily: {
       heading: "WEIGHT FAMILY",
       stylesSuffix: "WEIGHTS × 2 STYLES",
-      romanStylesSuffix: "WEIGHTS · ROMAN",
       regularSample: "접합부 5′ 쪽 20–24 nt 위치에 결합하는 exon junction complex (EJC)",
     },
   },
@@ -304,7 +307,7 @@ export const siteContent = {
   download: {
     sectionNumber: "04 / DOWNLOAD",
     titleLines: ["연구를 잘 전달하는", "네 가지 글꼴."],
-    copy: "논문 초고, 연구노트, 내부 보고서, 발표용 슬라이드, 그림에 바로 사용할 수 있습니다. 네 폰트 모두 SIL Open Font License 1.1에 따라 제공되며, README와 원본 저작권 고지를 함께 내려받을 수 있습니다.",
+    copy: "논문 초고, 연구노트, 내부 보고서, 발표용 슬라이드, 그림에 바로 사용할 수 있습니다. 네 폰트 모두 SIL Open Font License 1.1에 따라 제공되며, 라이선스와 원본 저작권 고지를 함께 내려받을 수 있습니다.",
     format: "OTF",
     stylesLabel: "styles",
     button: "Download ZIP",

@@ -51,12 +51,19 @@
 @font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; font-display: swap; }
 @font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-BlackItalic.woff2") format("woff2"); font-weight: 900; font-style: italic; font-display: swap; }
 @font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Thin.woff2") format("woff2"); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-ThinItalic.woff2") format("woff2"); font-weight: 100; font-style: italic; font-display: swap; }
 @font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Light.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-LightItalic.woff2") format("woff2"); font-weight: 300; font-style: italic; font-display: swap; }
 @font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-RegularItalic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
 @font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-MediumItalic.woff2") format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
 @font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-SemiBoldItalic.woff2") format("woff2"); font-weight: 600; font-style: italic; font-display: swap; }
 @font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-BoldItalic.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
 @font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-ExtraBold.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-ExtraBoldItalic.woff2") format("woff2"); font-weight: 800; font-style: italic; font-display: swap; }
 @font-face { font-family: "Pretendard Source"; src: url("/share/fonts/fonts/source/PretendardVariable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
 @font-face { font-family: "Inter Source"; src: url("/share/fonts/fonts/source/InterVariable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
 @font-face { font-family: "Inter Source"; src: url("/share/fonts/fonts/source/InterVariable-Italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
@@ -71,7 +78,7 @@
 @font-face { font-family: "Montserrat Source"; src: url("/share/fonts/fonts/source/MontserratVariable-Italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
 @font-face { font-family: "RIDIBatang Source"; src: url("/share/fonts/fonts/jaha/RIDIBatang.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
 
-:root { --background:#ffffff; --text:#172033; --text-strong:#101827; --muted:#657080; --border:#d8dde6; --edge:#6f33d8; --sprout:#15836d; --appendard:#2864dc; --jaha:#8f4c69; --pink:#e64a9b; --pale-blue:#eef4ff; --pale-green:#edf8f5; --pale-violet:#f1ebfb; --pale-jaha:#f8f0f4; --on-dark:#fff; --dark-muted:rgba(255,255,255,.62); --dark-border:rgba(255,255,255,.2); }
+:root { --background:#ffffff; --text:#172033; --text-strong:#101827; --muted:#657080; --border:#d8dde6; --edge:#e64a9b; --sprout:#15836d; --appendard:#2864dc; --jaha:#6f33d8; --pink:#e64a9b; --pale-blue:#eef4ff; --pale-green:#edf8f5; --pale-edge:#fdeef5; --pale-jaha:#f1ebfb; --on-dark:#fff; --dark-muted:rgba(255,255,255,.62); --dark-border:rgba(255,255,255,.2); }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body { margin:0; background:var(--background); color:var(--text); font-family:Arial,"Apple SD Gothic Neo",sans-serif; }
@@ -95,7 +102,7 @@ a { color:inherit; text-decoration:none; }
 .hero { min-height:860px; padding:54px 3vw 0; overflow:hidden; }
 .eyebrow,.section-no,.specimen-label { margin:0; font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
 .hero h1 { margin:70px 0 30px; max-width:1400px; font-size:clamp(68px,9.2vw,140px); font-weight:400; line-height:.96; letter-spacing:normal; }
-.hero-kicker { color:var(--edge); font:inherit; font-family:"SNU Edge Web",sans-serif; font-size:60%; font-weight:300; }
+.hero-kicker { color:var(--jaha); font:inherit; font-family:"SNU Edge Web",sans-serif; font-size:60%; font-weight:300; }
 .hero h1 em { color:var(--text-strong); font:inherit; font-family:"SNU Appendard Web",sans-serif; font-weight:800; }
 .hero-copy { max-width:590px; margin:0 0 0 auto; font:clamp(19px,2vw,29px)/1.5 "SNU Edge Web",sans-serif; }
 .hero-cta { display:flex; width:280px; justify-content:space-between; align-items:center; margin:52px 0 0 auto; padding:17px 0; border-block:1px solid var(--border); font-size:13px; font-weight:750; }
@@ -128,7 +135,6 @@ a { color:inherit; text-decoration:none; }
 .button-control { display:grid; grid-template-columns:1fr 1fr; gap:4px; }
 .button-control button { border:1px solid var(--dark-border); background:transparent; color:var(--dark-muted); cursor:pointer; font-size:11px; }
 .button-control button.active { border-color:var(--family-accent); background:var(--family-accent); color:var(--on-dark); }
-.button-control button:disabled { opacity:.32; cursor:not-allowed; }
 .comparison-stage { display:grid; grid-template-columns:1fr; border-inline:1px solid var(--dark-border); border-bottom:1px solid var(--dark-border); }
 .font-pane { min-width:0; min-height:132px; padding:22px; overflow:hidden; }
 .font-pane+ .font-pane { border-top:1px solid var(--dark-border); }
@@ -152,15 +158,18 @@ a { color:inherit; text-decoration:none; }
 
 .families-intro { display:grid; grid-template-columns:1fr 2fr; gap:35px; padding:130px 3vw 150px; }
 .families-intro h2 { margin:0; color:var(--appendard); font-size:clamp(35.84px,5.12vw,78.08px); line-height:.89; letter-spacing:normal; }
-.families-intro h2 i { color:var(--text); font-family:"SNU Edge Web",sans-serif; font-style:normal; font-weight:400; }
+.families-intro h2 .changes-title-lead { display:block; margin-bottom:.12em; }
+.families-intro h2 .changes-title-lead strong { font-weight:800; }
+.families-intro h2 i { color:var(--text); font-family:"SNU Jaha Web",serif; font-style:normal; font-weight:400; }
+.families-intro h2 i strong { font-weight:600; }
 .families-intro>p:last-child { grid-column:2; max-width:620px; margin:30px 0 0 auto; font-size:21px; line-height:1.55; }
 
 .biology-brief { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:14px; padding:0 3vw 140px; }
 .feature-card { display:flex; min-width:0; min-height:590px; flex-direction:column; padding:30px; overflow:hidden; border:1px solid var(--border); background:var(--background); }
 .feature-italic { grid-column:span 7; background:var(--pale-blue); }
 .feature-weight { grid-column:span 5; background:var(--pale-green); }
-.feature-latin { grid-column:span 5; background:var(--pale-violet); }
-.feature-width { grid-column:span 7; border-color:var(--edge); background:var(--edge); color:var(--on-dark); }
+.feature-latin { grid-column:span 5; background:var(--pale-jaha); }
+.feature-width { grid-column:span 7; border-color:var(--jaha); background:var(--jaha); color:var(--on-dark); }
 .feature-meta { display:flex; justify-content:space-between; gap:24px; font-size:10px; font-weight:800; letter-spacing:.12em; }
 .feature-meta b { font-size:inherit; }
 .feature-demo { min-height:190px; margin:44px 0; border-block:1px solid var(--border); }
@@ -189,7 +198,7 @@ a { color:inherit; text-decoration:none; }
 .feature-width .feature-meta,.feature-width .width-demo span { color:var(--dark-muted); }
 
 .family-story { padding:120px 3vw 140px; border-top:1px solid var(--border); background:var(--background); }
-.story-edge { background:var(--pale-violet); }
+.story-edge { background:var(--pale-edge); }
 .story-sprout { background:var(--pale-green); }
 .story-appendard { background:var(--pale-blue); }
 .story-jaha { background:var(--pale-jaha); }
@@ -249,7 +258,7 @@ a { color:inherit; text-decoration:none; }
 .glyph-section { padding:130px 3vw; background:var(--text-strong); color:var(--on-dark); overflow:hidden; }
 .glyph-wall { margin-top:75px; }
 .glyph-wall p { margin:0; border-top:1px solid var(--dark-border); font-size:clamp(34px,6.3vw,98px); line-height:1.25; white-space:nowrap; letter-spacing:normal; }
-.glyph-wall p:nth-child(2) { color:var(--pale-violet); font-style:italic; }
+.glyph-wall p:nth-child(2) { color:var(--pale-edge); font-style:italic; }
 .glyph-wall p:nth-child(3) { color:var(--pale-green); }
 .glyph-wall p:nth-child(4) { color:var(--pale-blue); }
 .glyph-wall p:last-child { color:var(--pale-jaha); border-bottom:1px solid var(--dark-border); }

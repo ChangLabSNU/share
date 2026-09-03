@@ -127,7 +127,6 @@ export default function Home() {
   function chooseFamily(next: Family) {
     setFamilyId(next.id);
     setWeight(next.weights.includes(400) ? 400 : next.weights[0]);
-    if (!next.hasItalic) setItalic(false);
   }
 
   const sampleStyle = {
@@ -165,7 +164,7 @@ export default function Home() {
 
       <section className="families-intro" id="families">
         <p className="section-no">{siteContent.changes.sectionNumber}</p>
-        <h2>{siteContent.changes.titleLines[0]}<br /><i>{siteContent.changes.titleLines[1]}</i></h2>
+        <h2><span className="changes-title-lead"><strong>{siteContent.changes.title.emphasis}</strong>{siteContent.changes.title.continuation}</span><i><strong>{siteContent.changes.title.secondLine.emphasis}</strong>{siteContent.changes.title.secondLine.continuation}</i></h2>
         <p>{siteContent.changes.introduction}</p>
       </section>
 
@@ -179,6 +178,7 @@ export default function Home() {
             <div><span>{feature.italic.demos.edgeLabel}</span><p className="font-edge"><ItalicText text={feature.italic.demos.edgeText} /></p></div>
             <div><span>{feature.italic.demos.sproutLabel}</span><p className="font-sprout"><ItalicText text={feature.italic.demos.sproutText} /></p></div>
             <div><span>{feature.italic.demos.appendardLabel}</span><p className="font-appendard"><ItalicText text={feature.italic.demos.appendardText} /></p></div>
+            <div><span>{feature.italic.demos.jahaLabel}</span><p className="font-jaha"><ItalicText text={feature.italic.demos.jahaText} /></p></div>
           </div>
           <div className="feature-copy">
             <h3>{feature.italic.titleLines[0]}<br />{feature.italic.titleLines[1]}</h3>
@@ -290,7 +290,7 @@ export default function Home() {
             </label>
             <div className="button-control" aria-label={controls.postureAriaLabel}>
               <button className={!italic ? "active" : ""} onClick={() => setItalic(false)}>{controls.roman}</button>
-              <button disabled={!family.hasItalic} className={italic ? "active" : ""} onClick={() => setItalic(true)}>{controls.italic}</button>
+              <button className={italic ? "active" : ""} onClick={() => setItalic(true)}>{controls.italic}</button>
             </div>
             <div className="button-control" aria-label={controls.viewAriaLabel}>
               <button className={view === "stacked" ? "active" : ""} onClick={() => setView("stacked")}>{controls.stacked}</button>
@@ -379,7 +379,7 @@ export default function Home() {
           <div className="weight-family">
             <div className="weight-heading">
               <span>{siteContent.familyStory.weightFamily.heading}</span>
-              <span>{item.weights.length} {item.hasItalic ? siteContent.familyStory.weightFamily.stylesSuffix : siteContent.familyStory.weightFamily.romanStylesSuffix}</span>
+              <span>{item.weights.length} {siteContent.familyStory.weightFamily.stylesSuffix}</span>
             </div>
             {item.weights.map((itemWeight) => (
               <div className="weight-row" key={itemWeight}>
@@ -415,7 +415,7 @@ export default function Home() {
               <span className="download-index">0{index + 1}</span>
               <div>
                 <h3 className={item.className}>{item.displayName}</h3>
-                <p>{item.name} · {siteContent.download.format} · {item.weights.length * (item.hasItalic ? 2 : 1)} {siteContent.download.stylesLabel}</p>
+                <p>{item.name} · {siteContent.download.format} · {item.weights.length * 2} {siteContent.download.stylesLabel}</p>
               </div>
               <a href={item.download} download aria-label={`${item.name} ${siteContent.download.ariaSuffix}`}>
                 <span>{siteContent.download.button}</span><b>↓</b>
