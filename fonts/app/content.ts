@@ -170,7 +170,7 @@ export const siteContent = {
         continuation: "를 바꿨습니다.",
       },
     },
-    introduction: "실제 연구 문서에서도 멋진 한글 글꼴을 쓸 수 있도록 문제점들을 손봤습니다. 학술 문서에 필수적인 이탤릭, 영문만 길게 써도 어울리는 영문 글꼴, 산뜻한 발표자료를 위한 다양한 굵기, 한글·영문을 섞어 써도 잘 어울리는 간격을 갖도록 했습니다. 스누 엣지는 산뜻한 제목과 발표에, 스누 새싹은 친근하고 정돈된 포인트 강조에, 스누 어펜다드는 중립적이고 신뢰감 있는 본문에, 스누 자하는 자하연의 고요한 생동감을 담은 긴 논문과 제안서에 맞도록 각자의 역할을 갖게 됐습니다.",
+    introduction: "실제 연구 문서에서도 멋진 한글 글꼴을 쓸 수 있도록 문제점들을 손봤습니다. 학술 문서에 필수적인 이탤릭, 영문만 길게 써도 어울리는 영문 글꼴, 산뜻한 발표자료를 위한 다양한 굵기, 한글·영문을 섞어 써도 잘 어울리는 간격을 갖도록 했습니다. 스누 엣지는 산뜻한 제목과 발표에, 스누 새싹은 친근하고 정돈된 포인트 강조에, 스누 어펜다드는 중립적이고 신뢰감 있는 본문에, 스누 자하는 긴 논문과 제안서에 맞도록 각자의 역할을 갖게 됐습니다.",
     ariaLabel: "생물학 연구를 위한 네 가지 개조 원칙",
     features: {
       italic: {
@@ -196,7 +196,7 @@ export const siteContent = {
           { familyId: "edge", label: "EDGE · 8 WEIGHTS (FROM 4 WEIGHTS OF NANUMSQUARE)", korean: "엣지있는스누엣지", latin: "EDGYEDGE" },
           { familyId: "sprout", label: "SPROUT · 8 WEIGHTS (FROM 3 WEIGHTS OF LINE SEED SANS KR)", korean: "다정스런스누새싹", latin: "MYSPROUT" },
           { familyId: "appendard", label: "APPENDARD · 9 WEIGHTS (ORIGINAL WEIGHTS)", korean: "차분한스누어펜다드", latin: "APPENDARD" },
-          { familyId: "jaha", label: "JAHA · 7 WEIGHTS (FROM 1 WEIGHT OF RIDIBATANG)", korean: "고요한스누자하", latin: "SNUJAHA" },
+          { familyId: "jaha", label: "JAHA · 7 WEIGHTS (FROM 1 WEIGHT OF RIDIBATANG)", korean: "단아한스누자하", latin: "SNUJAHA" },
         ],
         // Use [wght=100]...[/wght] through [wght=900]...[/wght] to mix weights safely.
         titleLines: ["[wght=500]리듬감[/wght] [wght=300]살리는[/wght] [wght=900]두[/wght][wght=700]께.[/wght]"],

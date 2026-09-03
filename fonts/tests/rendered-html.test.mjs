@@ -429,7 +429,7 @@ test("weight feature maps every family weight to one Korean and Latin glyph", as
   assert.match(content, /familyId: "edge"[^\n]*korean: "엣지있는스누엣지"[^\n]*latin: "EDGYEDGE"/);
   assert.match(content, /familyId: "sprout"[^\n]*korean: "다정스런스누새싹"[^\n]*latin: "MYSPROUT"/);
   assert.match(content, /familyId: "appendard"[^\n]*korean: "차분한스누어펜다드"[^\n]*latin: "APPENDARD"/);
-  assert.match(content, /familyId: "jaha"[^\n]*korean: "고요한스누자하"[^\n]*latin: "SNUJAHA"/);
+  assert.match(content, /familyId: "jaha"[^\n]*korean: "단아한스누자하"[^\n]*latin: "SNUJAHA"/);
   assert.match(content, /8 WEIGHTS \(FROM 4 WEIGHTS OF NANUMSQUARE\)/);
   assert.match(content, /8 WEIGHTS \(FROM 3 WEIGHTS OF LINE SEED SANS KR\)/);
   assert.match(content, /9 WEIGHTS \(ORIGINAL WEIGHTS\)/);
