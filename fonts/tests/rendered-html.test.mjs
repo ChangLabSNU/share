@@ -23,22 +23,34 @@ test("statically exports the QBio Fonts showcase", async () => {
   assert.match(html, /<p class="font-sprout">[^<]+<i>[^<]+<\/i>[^<]+<\/p>/);
   assert.match(html, /<p class="font-appendard"><i>[^<]+<\/i>[^<]+<\/p>/);
   assert.match(html, /<p class="font-jaha"><i>[^<]+<\/i>[^<]+<\/p>/);
-  assert.match(html, /LECTURE SLIDE/);
-  assert.doesNotMatch(html, /PRESENTATION SLIDE/);
-  assert.match(html, /Cap Analogs/);
-  assert.match(html, /<strong><em>Vaccinia<\/em> capping enzyme<\/strong>/);
-  assert.match(html, /Anti-Reverse Cap Analog/);
-  assert.match(html, /\[생각해 볼 문제\]/);
-  assert.match(html, /Eukaryotic transcription system/);
+  assert.equal(html.match(/PRESENTATION SLIDE/g)?.length, 4);
+  assert.doesNotMatch(html, /LECTURE SLIDE|Cap Analogs/);
+  assert.match(html, /SYSTEMS NEUROSCIENCE · SPATIAL MEMORY/);
+  assert.match(html, /DEVELOPMENTAL BIOLOGY · LINEAGE TRACING/);
+  assert.match(html, /POPULATION GENETICS · GENE FLOW/);
+  assert.match(html, /INTEGRATIVE TAXONOMY · SPECIES DELIMITATION/);
+  assert.match(html, /문을 닫은 직후 나타나는 ‘아, 거기였지’ 반응/);
+  assert.match(html, /120 PANELS/);
+  assert.match(html, /240 BAGS/);
+  assert.match(html, /<em>Jahaella<\/em> × 3/);
   assert.doesNotMatch(html, /FIGURE LEGEND|SCIENTIFIC ITALIC/);
   assert.match(html, /RESEARCH PROPOSAL/);
-  assert.match(html, /세포 내 조절기전까지 고려한 mRNA 서열 정밀 설계/);
-  assert.match(html, /2\.4 × 10<sup>632<\/sup>/);
-  assert.match(html, /2\.1\. 코돈 사용빈도에서 RNA 2차 구조 최적화까지/);
-  assert.match(html, /2\.2\. 현행 설계는 무시하는 mRNA의 세포 내 일생/);
-  assert.match(html, /dominant negative/);
+  assert.match(html, /−80 °C 냉동고 탐색에서 색 단서가 공간기억 재고착에 미치는 영향/);
+  assert.match(html, /2\.1\. 냉동고 digital twin에서 공간 단서의 선택적 교란/);
+  assert.match(html, /Figure panel의 발생계보와 graphical abstract로의 운명 결정/);
+  assert.match(html, /Waddington landscape/);
+  assert.match(html, /학회 에코백의 유전자 흐름과 연구기관 간 이입/);
+  assert.match(html, /배수체로 분류하지 않고 동일 운반체에서 발생한 반복관찰로 처리한다/);
+  assert.match(html, /자하연 ‘마감고둥’ 종복합체의 통합분류와 제출기 계절성/);
+  assert.match(html, /<em>Jahaella drafta<\/em>/);
+  assert.match(html, /2\.1\. 형태·유전체 자료를 결합한 종 경계 추론/);
+  assert.match(html, /2\.2\. 마감 신호에 대한 출현 반응 검증/);
+  assert.match(html, /귀무대조군에는 ‘마감 없음’을 제시하며/);
+  const proposalCards = html.match(/<article class="specimen specimen-proposal">[\s\S]*?<\/article>/g) ?? [];
+  assert.equal(proposalCards.length, 4);
+  proposalCards.forEach((card) => assert.ok((card.match(/<em>/g) ?? []).length >= 2));
   assert.match(html, /01 \/ WHAT WE CHANGED/);
-  assert.match(html, /네 가지를 바꿨습니다/);
+  assert.match(html, /네 가지<\/strong>를 바꿨습니다\./);
   assert.match(html, /02 \/ COMPARE LAB/);
   assert.doesNotMatch(html, /THREE FAMILIES/);
 
@@ -64,7 +76,7 @@ test("statically exports the QBio Fonts showcase", async () => {
   assert.match(html, /스누 새싹/);
   assert.match(html, /스누 어펜다드/);
   assert.match(html, /스누 자하/);
-  assert.match(html, /자하연의 고요한 운치/);
+  assert.match(html, /자하연의 고요한 생동감을 닮은,<br\/>읽기 편안한/);
   assert.match(html, /RIDIBatang/);
   assert.match(html, /Roboto Serif/);
   assert.match(html, /WEIGHT FAMILY/);
@@ -79,7 +91,14 @@ test("family editorial copy uses the family being introduced", async () => {
   const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
 
-  assert.ok(page.includes("<h3><FontText family={item}>{item.tagline}</FontText></h3>"));
+  assert.match(page, /function FamilyTagline\(\{ family \}: \{ family: Family \}\)/);
+  assert.match(page, /if \(!Array\.isArray\(family\.tagline\)\)/);
+  assert.match(page, /family\.tagline\.map\(\(line, index\) =>/);
+  assert.match(page, /\{index > 0 && <br \/>\}/);
+  assert.ok(page.includes("<FamilyTagline family={item} />"));
+  assert.match(page, /function StatNote\(\{ family, note \}: \{ family: Family; note: string \| string\[\] \}\)/);
+  assert.match(page, /if \(!Array\.isArray\(note\)\) return note;/);
+  assert.ok(page.includes("<p><StatNote family={item} note={stat.note} /></p>"));
   assert.ok(page.includes('<p className="story-summary"><FontText family={item}>{item.summary}</FontText></p>'));
   assert.ok(page.includes('className={`use-list ${item.className}`}'));
   assert.ok(page.includes('<article key={stat.label} className={item.className}>'));
@@ -110,22 +129,44 @@ test("download family titles use thirty-percent-darkened accent colors", async (
   assert.match(css, /\.download-list h3 \{[^}]*color:color-mix\(in srgb,var\(--accent\) 70%,#000\);/);
 });
 
-test("all families keep two realistic specimen cards with formatted presentation surfaces", async () => {
+test("each family pairs a distinct presentation design with its research proposal", async () => {
   const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
 
   assert.doesNotMatch(page, /specimen-legend|specimen-italic/);
-  assert.match(css, /\.specimen-lead \{ background:var\(--text\); color:var\(--on-dark\); \}/);
-  assert.match(page, /<h4>\{specimens\.presentationTitle\}<\/h4>/);
-  assert.match(page, /<PresentationList bullets=\{specimens\.presentationBullets\} \/>/);
-  assert.match(page, /<p className="presentation-prompt"><InlineMarkup text=\{specimens\.presentationPrompt\} \/><\/p>/);
-  assert.match(css, /\.presentation-slide h4 \{[^}]*text-align:center;[^}]*font-size:clamp\(22px,2\.2vw,34px\);/);
-  assert.match(css, /\.presentation-slide ul \{[^}]*list-style:none;[^}]*font-size:clamp\(10px,1\.65vw,18px\);/);
-  assert.match(css, /\.presentation-slide li::before \{[^}]*color:var\(--dark-muted\);[^}]*content:"-";/);
-  assert.match(css, /\.presentation-slide sup \{ font-size:\.68em; font-weight:600; line-height:0; vertical-align:super; \}/);
-  assert.match(css, /\.presentation-prompt \{[^}]*border-top:1px solid var\(--dark-border\);[^}]*font-size:clamp\(12px,1vw,16px\);/);
-  assert.match(page, /<div className=\{`proposal-document \$\{item\.className\}`\}>/);
-  assert.match(page, /specimens\.proposalSections\.map/);
+  assert.match(css, /\.specimen-lead \{ background:var\(--background\); color:var\(--text\); \}/);
+  assert.match(page, /function EdgePresentationSlide\(\{ slide \}: \{ slide: GrantSlide \}\)/);
+  assert.match(page, /function SproutPresentationSlide\(\{ slide \}: \{ slide: GrantSlide \}\)/);
+  assert.match(page, /function AppendardPresentationSlide\(\{ slide \}: \{ slide: GrantSlide \}\)/);
+  assert.match(page, /function JahaPresentationSlide\(\{ slide \}: \{ slide: GrantSlide \}\)/);
+  assert.match(page, /function PresentationSlide\(\{ family, slide \}: \{ family: Family; slide: GrantSlide \}\)/);
+  assert.match(page, /family\.id === "edge"/);
+  assert.match(page, /family\.id === "sprout"/);
+  assert.match(page, /family\.id === "appendard"/);
+  assert.match(page, /function FamilySpecimenCards\(\{ family \}: \{ family: Family \}\)/);
+  assert.match(page, /specimens\.byFamily\[family\.id\]/);
+  assert.match(page, /<PresentationSlide family=\{family\} slide=\{specimen\.slide\} \/>/);
+  assert.match(page, /<h4>\{specimen\.proposal\.title\}<\/h4>/);
+  assert.match(page, /specimen\.proposal\.sections\.map/);
+  assert.match(page, /className="edge-freezer-grid"/);
+  assert.match(page, /className="sprout-lineage"/);
+  assert.match(page, /className="appendard-admixture"/);
+  assert.match(page, /className="jaha-specimen-plate"/);
+  assert.match(css, /\.presentation-design \{[^}]*min-height:390px;/);
+  assert.match(css, /\.presentation-design sup \{ font-size:\.65em; font-weight:600;/);
+  assert.match(css, /\.edge-slide-layout \{[^}]*grid-template-columns:minmax\(0,41%\) minmax\(0,59%\);/);
+  assert.match(css, /\.edge-freezer-grid \{[^}]*grid-template-columns:repeat\(4,minmax\(0,1fr\)\);/);
+  assert.match(css, /\.slide-sprout \{[^}]*border-radius:16px;/);
+  assert.match(css, /\.sprout-lineage \{[^}]*grid-template-columns:105px 66px minmax\(0,1fr\);/);
+  assert.match(css, /\.slide-appendard \{ padding:0;/);
+  assert.match(css, /\.appendard-slide-main \{[^}]*grid-template-columns:minmax\(0,46%\) minmax\(0,54%\);/);
+  assert.match(css, /\.appendard-chart-row>div \{ display:flex; height:17px;/);
+  assert.match(css, /\.jaha-slide-main \{[^}]*grid-template-columns:minmax\(0,54%\) minmax\(0,46%\);/);
+  assert.match(css, /\.jaha-specimen-plate \{[^}]*border-left:1px solid/);
+  assert.doesNotMatch(page, /GrantProposalSlide/);
+  assert.doesNotMatch(css, /\.grant-slide|\.grant-pillars|\.grant-outcome/);
+  assert.doesNotMatch(page, /PresentationList|presentationBullets|jahaGrantSlide|jahaProposal/);
+  assert.doesNotMatch(css, /\.presentation-slide|\.presentation-prompt/);
   assert.match(css, /\.specimen-proposal \{ min-height:0; contain:size; \}/);
   assert.match(css, /\.proposal-document \{[^}]*font-size:clamp\(10\.8px,1\.02vw,15\.6px\);/);
   assert.match(css, /\.proposal-document h4 \{[^}]*border-bottom:2px solid var\(--text\);[^}]*font-size:clamp\(19\.2px,1\.74vw,26\.4px\);/);
@@ -271,7 +312,7 @@ test("SNU Jaha exposes seven Roman and native italic weights", async () => {
 
   assert.match(content, /id: "jaha"[\s\S]*?weights: \[100, 300, 400, 500, 600, 700, 800\]/);
   assert.match(content, /download: "https:\/\/github\.com\/hyeshik\/snu-jaha\/releases\/download\/v0\.1\.0\/SNUJaha-0\.1\.0\.zip"/);
-  assert.match(content, /value: "520", label: "고정폭 숫자"/);
+  assert.match(content, /value: "En", label: "좁은 영문 폭"/);
   assert.doesNotMatch(content, /hasItalic|romanStylesSuffix/);
   assert.match(css, /RIDIBatang\.woff2/);
 
@@ -340,6 +381,10 @@ test("site theme uses the biological family palette", async () => {
   assert.match(css, /\.families-intro h2 i strong \{ font-weight:600; \}/);
   assert.match(css, /\.feature-latin \{[^}]*background:var\(--pale-jaha\);/);
   assert.match(css, /\.feature-width \{[^}]*border-color:var\(--jaha\);[^}]*background:var\(--jaha\);/);
+  assert.match(css, /\.feature-italic \.feature-copy h3 \{ font-family:"SNU Jaha Web",serif; \}/);
+  assert.match(css, /\.feature-weight \.feature-copy h3 \{ font-family:"SNU Edge Web",sans-serif; \}/);
+  assert.match(css, /\.feature-latin \.feature-copy h3 \{ font-family:"SNU Appendard Web",sans-serif; font-weight:600; \}/);
+  assert.match(css, /\.feature-width \.feature-copy h3 \{ font-family:"SNU Sprout Web",sans-serif; line-height:1\.12; \}/);
   assert.match(css, /\.original-pane \.sample-label b \{ color:var\(--border\); \}/);
   assert.match(css, /\.original-pane \.sample-text \{ color:var\(--border\); \}/);
   assert.match(css, /\.download-list h3 \{[^}]*font-weight:700;/);
@@ -419,7 +464,10 @@ test("family stat values and headings use the intended hierarchy", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
 
   assert.match(css, /\.stat-grid strong \{[^}]*transform:translateY\(20px\);/);
+  assert.match(css, /\.story-jaha \.stat-grid strong \{[^}]*font-family:"SNU Appendard Web",sans-serif;/);
   assert.match(css, /\.stat-grid h4 \{[^}]*font-weight:600;/);
+  assert.match(css, /\.story-jaha \.stat-grid h4 \{ font-weight:400; \}/);
+  assert.match(css, /\.story-jaha \.stat-grid p \{ font-weight:100; \}/);
 });
 
 test("weight feature copy honors safe wght markup", async () => {

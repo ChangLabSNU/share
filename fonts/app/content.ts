@@ -13,16 +13,33 @@ export type Family = {
   weights: number[];
   className: string;
   accent: string;
-  tagline: string;
+  tagline: string | string[];
   summary: string;
-  stats: { value: string; label: string; note: string }[];
+  stats: { value: string; label: string; note: string | string[] }[];
   uses: string[];
   download: string;
 };
 
-export type PresentationBullet = {
-  text: string;
-  children?: string[];
+export type GrantSlide = {
+  eyebrow: string;
+  folio: string;
+  title: string;
+  thesis: string;
+  pillars: { label: string; value: string; body: string }[];
+  visualItems: string[];
+  outcomeLabel: string;
+  outcome: string;
+};
+
+export type ProposalSpecimen = {
+  title: string;
+  intro: string;
+  sections: { title: string; paragraphs: string[] }[];
+};
+
+export type FamilySpecimen = {
+  slide: GrantSlide;
+  proposal: ProposalSpecimen;
 };
 
 export const siteMetadata = {
@@ -62,7 +79,7 @@ export const families: Family[] = [
     weights: [100, 300, 400, 500, 600, 700, 800, 900],
     className: "font-sprout",
     accent: "#15836D",
-    tagline: "둥글둥글 친근하지만, 정보는 단정하게 정리됩니다.",
+    tagline: ["둥글둥글 친근하지만,", "정보는 단정하게 정리됩니다."],
     summary: "정돈되어 있지만 다정하고 친절한 인상에 제목·프리젠테이션·삽화 문구에 잘 어울립니다. 핵심 문장과 데이터 포인트를 부분적으로 강조할 때 특히 유용합니다. LINE Seed Sans KR의 세 마스터를 여덟 굵기로 확장하고, italic에서는 한글은 바로 세우고 latin·숫자·기호만 10° 기울였습니다.",
     stats: [
       { value: "3 → 8", label: "더 많은 굵기", note: "Thin부터 Black까지 연속된 여덟 단계로 자료를 체계적으로 강조하여 표현할 수 있습니다" },
@@ -82,7 +99,7 @@ export const families: Family[] = [
     weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
     className: "font-appendard",
     accent: "#2864DC",
-    tagline: "중립적인 인상과 신뢰감으로, 긴 본문을 안정적이고 읽기 좋게.",
+    tagline: ["중립적인 인상과 신뢰감으로,", "긴 본문을 안정적이고 읽기 좋게."],
     summary: "세련되고 믿음을 주는 형태로 논문·보고서·제안서의 본문과 figure label처럼 길게 표현해야 하는 문장에 가장 잘 맞습니다. Pretendard의 익숙한 한글 흐름에 Inter 4.1의 true italic을 결합해 학명·유전자명이 섞인 연구 문서와 슬라이드를 제대로 만들 수 있습니다.",
     stats: [
       { value: "9 × 2", label: "연구 문서용 굵기", note: "Thin부터 Black까지, 본문·Figure·발표 제목을 한 글꼴로" },
@@ -97,19 +114,19 @@ export const families: Family[] = [
     name: "SNU Jaha",
     shortName: "자하",
     displayName: "스누 자하",
-    source: "Derived from RIDIBatang and Roboto Serif 14pt",
+    source: "Derived from RIDIBatang and Roboto Serif",
     originalLabel: "RIDIBatang",
     weights: [100, 300, 400, 500, 600, 700, 800],
     className: "font-jaha",
     accent: "#6F33D8",
-    tagline: "자하연의 고요한 운치를 닮은, 오래 읽어도 편안한 연구 문서용 바탕체.",
-    summary: "리디바탕의 단정하고 따뜻한 한글 골격에 Roboto Serif 14pt의 정교한 라틴 문자와 native italic을 맞춰, 한국어와 영문이 긴 문단 속에서 한결같은 호흡으로 흐릅니다. 일곱 가지 굵기를 각각 roman과 italic로 제공하고 고정폭 숫자를 더해, 논문·연구계획서·학위논문처럼 오래 읽는 문서의 본문부터 제목·표·인용까지 차분하게 이어줍니다.",
+    tagline: ["자하연의 고요한 생동감을 닮은,", "읽기 편안한 연구 문서용 바탕체."],
+    summary: "리디바탕의 단정하고 따뜻한 한글 골격에 Roboto Serif의 정교한 라틴 문자와 native italic을 맞춰, 한국어와 영문이 긴 문단 속에서 한결같은 호흡으로 흐릅니다. 일곱 가지 굵기를 각각 roman과 italic로 제공하고 고정폭 숫자를 더해, 논문·연구계획서·학위논문처럼 오래 읽는 문서의 본문부터 제목·표·인용까지 차분하게 이어줍니다.",
     stats: [
-      { value: "1 → 7", label: "본문에서 표제까지", note: "리디바탕 Regular 한 굵기를 Thin부터 ExtraBold까지 일곱 단계로 확장했습니다" },
+      { value: "1 → 7", label: "본문에서 표제까지", note: "한 가지 굵기 밖에 없던 리디바탕을 일곱 단계로 확장했습니다" },
       { value: "/", label: "진짜 이탤릭", note: "Roboto Serif의 native italic을 이식해 학명·유전자명과 라틴어 표현을 정확히 조판합니다" },
-      { value: "520", label: "고정폭 숫자", note: "upright 0–9의 폭을 일정하게 맞춰 표·통계·참고문헌의 숫자 열을 가지런히 정리합니다" },
+      { value: "En", label: "좁은 영문 폭", note: "Latin 글자의 폭을 한글과 비슷한 리듬으로 좁혀서 영어가 많이 섞인 텍스트도 자연스럽게 읽힙니다" },
     ],
-    uses: ["논문·학위논문 본문", "연구계획서", "보고서", "서론·초록", "표·참고문헌"],
+    uses: ["논문", "연구계획서", "보고서", "공식 안내문", "표·참고문헌"],
     download: "https://github.com/hyeshik/snu-jaha/releases/download/v0.1.0/SNUJaha-0.1.0.zip",
   },
 ];
@@ -153,7 +170,7 @@ export const siteContent = {
         continuation: "를 바꿨습니다.",
       },
     },
-    introduction: "실제 연구 문서에서도 멋진 한글 글꼴을 쓸 수 있도록 문제점들을 손봤습니다. 학술 문서에 필수적인 이탤릭, 영문만 길게 써도 어울리는 영문 글꼴, 산뜻한 발표자료를 위한 다양한 굵기, 한글·영문을 섞어 써도 잘 어울리는 간격을 갖도록 했습니다. 스누 엣지는 산뜻한 제목과 발표에, 스누 새싹은 친근하고 정돈된 포인트 강조에, 스누 어펜다드는 중립적이고 신뢰감 있는 본문에, 스누 자하는 자하연의 고요한 분위기를 담은 긴 논문과 제안서에 맞도록 각자의 역할을 갖게 됐습니다.",
+    introduction: "실제 연구 문서에서도 멋진 한글 글꼴을 쓸 수 있도록 문제점들을 손봤습니다. 학술 문서에 필수적인 이탤릭, 영문만 길게 써도 어울리는 영문 글꼴, 산뜻한 발표자료를 위한 다양한 굵기, 한글·영문을 섞어 써도 잘 어울리는 간격을 갖도록 했습니다. 스누 엣지는 산뜻한 제목과 발표에, 스누 새싹은 친근하고 정돈된 포인트 강조에, 스누 어펜다드는 중립적이고 신뢰감 있는 본문에, 스누 자하는 자하연의 고요한 생동감을 담은 긴 논문과 제안서에 맞도록 각자의 역할을 갖게 됐습니다.",
     ariaLabel: "생물학 연구를 위한 네 가지 개조 원칙",
     features: {
       italic: {
@@ -252,40 +269,146 @@ export const siteContent = {
   familyStory: {
     recommendedUseAriaSuffix: "권장 용도",
     specimens: {
-      presentationLabel: "LECTURE SLIDE",
-      presentationTitle: "Cap Analogs",
-      presentationBullets: [
-        {
-          text: "정상적인 mRNA의 안정성과 번역 효율을 달성하려면 5′ cap 구조가 필수적이다.",
-        },
-        {
-          text: "Bacteriophage IVT system에서는 capping enzyme이 없으므로 추가로 다른 방법을 써야 한다.",
-          children: [
-            "<strong>Post-transcriptional capping</strong>: <strong><em>Vaccinia</em> capping enzyme</strong>으로 따로 반응. 경제성이 떨어짐.",
-            "<strong>Co-transcriptional capping</strong>: <strong>cap analogs</strong> 활용",
-          ],
-        },
-        { text: "Cap의 효율을 높이기 위해 <strong>Anti-Reverse Cap Analog</strong> (<strong>ARCA</strong>)를 쓴다." },
-        { text: "플랫폼에 따라 Internal Ribosome Entry Site (IRES)를 쓰는 방법도 존재한다." },
-      ],
-      presentationPrompt: "<strong>[생각해 볼 문제]</strong> 그냥 Eukaryotic transcription system을 쓰면 안 될까?",
+      presentationLabel: "PRESENTATION SLIDE",
       proposalLabel: "RESEARCH PROPOSAL",
-      proposalTitle: "2. 세포 내 조절기전까지 고려한 mRNA 서열 정밀 설계",
-      proposalIntro: "mRNA 약물의 코딩 서열은 완전히 같은 단백질을 만들더라도 코돈 선택의 조합이 약 2.4 × 10<sup>632</sup>가지에 달한다(COVID-19 백신의 스파이크 단백질 기준). 이 중 어느 서열을 선택하느냐에 따라 mRNA의 보관 안정성, 세포 전달 효율, 세포 내 안정성, 단백질 생산 효율이 수백에서 수만 배 이상 차이 난다. 본 연구에서는 세포 내에서 일어나는 다양한 생물학적 조절작용을 최대한 고려하여 약물의 안정성과 총 단백질 생산량을 최대화하는 정밀 설계 기법을 개발하는 것을 목표로 한다.",
-      proposalSections: [
-        {
-          title: "2.1. 코돈 사용빈도에서 RNA 2차 구조 최적화까지",
-          paragraphs: [
-            "mRNA 백신의 개발 초기에는 코돈 사용빈도를 세포 내에서 발현량이 높은 유전자와 비슷하게 구성하는 기법을 사용해 왔으나, 2019년에 RNA의 2차 구조를 강하게 하는 것이 총 단백질 생산량에 압도적으로 기여한다는 사실이 밝혀졌다. 이후 코돈 사용빈도와 2차 구조를 동시에 고려하여 코딩 서열을 최적화하는 기법으로 LinearDesign과 RiboTree 등이 개발되었다. 이들 소프트웨어는 신규 백신 및 치료제 개발에 적용되어 다수가 임상 2상을 진행 중이다.",
-          ],
+      byFamily: {
+        edge: {
+          slide: {
+            eyebrow: "SYSTEMS NEUROSCIENCE · SPATIAL MEMORY",
+            folio: "AIM 1",
+            title: "−80 °C 냉동고 탐색의 공간기억 지도",
+            thesis: "rack 좌표·색 테이프·성에 무늬를 통합한 공간표상이 샘플 위치의 회상과 재고착을 결정한다.",
+            pillars: [
+              { label: "ENVIRONMENT", value: "−80 °C", body: "저온 노출 없는 실물 크기 digital twin" },
+              { label: "LANDMARKS", value: "3 CUES", body: "rack 번호·상자 색·선반 높이의 선택적 교란" },
+              { label: "RECALL", value: "4 SEC", body: "문을 닫은 직후 나타나는 ‘아, 거기였지’ 반응" },
+            ],
+            visualItems: ["TARGET", "SHIFTED CUE", "RECALLED"],
+            outcomeLabel: "EXPECTED OUTCOME",
+            outcome: "색 단서가 냉동고 공간기억의 탐색과 재고착에 기여하는 정도를 정량화한다.",
+          },
+          proposal: {
+            title: "2. −80 °C 냉동고 탐색에서 색 단서가 공간기억 재고착에 미치는 영향",
+            intro: "연구자는 −80 °C 냉동고에서 샘플을 찾을 때 rack 번호, 선반 높이, 상자의 색과 성에 무늬를 하나의 3차원 공간지도로 통합한다. 그러나 예비 관찰에서는 냉동고 문이 열려 있는 동안보다 닫힌 직후 4초 안에 목표 위치를 정확히 떠올리는 ‘문 닫힘 회상’이 일관되게 나타났다. 본 연구는 색 테이프가 공간 탐색의 landmark이자 기억 재고착의 단서로 작용한다는 가설을 검증하고자 한다.",
+            sections: [
+              {
+                title: "2.1. 냉동고 digital twin에서 공간 단서의 선택적 교란",
+                paragraphs: [
+                  "Morris <em>et al.</em>의 공간기억 패러다임을 연구실 환경에 맞게 변형한 실물 크기의 <em>in silico</em> 냉동고 digital twin을 구축하고, 48명의 연구 참여자에게 rack–shelf–box 좌표로 정의된 샘플 위치를 학습시킨다. 색 테이프를 원래 위치에 유지하거나 인접 상자와 교환하고, 색 단서를 완전히 제거한 조건을 무작위로 제시한다. 시선 궤적, 최초 선택까지의 시간과 탐색 경로 길이를 기록하고, 참여자와 상자를 무작위 효과로 포함한 계층적 Bayesian 모형으로 각 단서의 기여도를 추정한다.",
+                ],
+              },
+              {
+                title: "2.2. 문 닫힘 신호에 의한 기억 재고착과 위치 회상",
+                paragraphs: [
+                  "학습 24시간 뒤 일부 상자의 위치를 이동시킨 후 냉동고 문 닫힘 소리, 타이머 종료음 또는 무음 조건을 제시한다. 4초 이내에 발생하는 위치 정정과 ‘아, 거기였지’ 발화를 재고착의 행동 지표로 정의하고, 일주일 뒤 지연 회상으로 기억의 안정성을 평가한다. 문 닫힘 신호가 이동된 위치의 학습을 선택적으로 촉진한다면, 냉동고를 다시 열기 전에 기억이 선명해지는 연구실 경험을 신경과학적 모형으로 설명할 수 있다.",
+                ],
+              },
+            ],
+          },
         },
-        {
-          title: "2.2. 현행 설계는 무시하는 mRNA의 세포 내 일생",
-          paragraphs: [
-            "mRNA 약물은 세포질로 진입하고 번역을 통해 단백질을 생산하면서도, 세포 내 조절 단백질과의 결합, 번역 의존적 분해, 폴리(A) 꼬리 조절, RNA 수식 등 일생 동안 끊임없이 세포 내 조절기전의 영향을 받는다. 이들 조절 기전은 대체로 RNA의 서열과 구조에 의해 결정되므로, 코돈의 선택으로 mRNA의 세포 내 운명을 바꿀 수 있으며 지속 기간과 총 단백질 생산량을 약물의 목적에 맞게 최적화할 수 있다. 특히 frameshift나 RNA 수식은 생산되는 단백질의 종류를 바꿔 놓을 수 있어 원치 않는 단백질로 인한 예상하기 힘든 부작용을 초래할 수 있으며, 일부는 치료제에서 우성 음성(dominant negative) 돌연변이체로 작용하여 치료제의 성능을 떨어뜨릴 수도 있다. 따라서 세포 내에서 발생하는 조절작용을 코돈 선택 단계에서 2차 구조 등과 함께 총체적으로 고려한 정밀한 설계 기법이 필요하다.",
-          ],
+        sprout: {
+          slide: {
+            eyebrow: "DEVELOPMENTAL BIOLOGY · LINEAGE TRACING",
+            folio: "AIM 1",
+            title: "Figure panel의 발생과 운명 결정",
+            thesis: "하나의 초안은 피드백 신호의 조합에 따라 Figure·포스터·graphical abstract로 분화한다.",
+            pillars: [
+              { label: "PROGENITORS", value: "120 PANELS", body: "동일한 초기 스케치에서 출발한 panel 계보" },
+              { label: "MORPHOGENS", value: "3 SIGNALS", body: "글자 확대·화살표 정리·핵심 메시지 선택" },
+              { label: "CELL FATES", value: "4 FATES", body: "본문 Figure·보충자료·포스터·graphical abstract" },
+            ],
+            visualItems: ["본문 Figure", "보충자료", "포스터", "Graphical abstract"],
+            outcomeLabel: "EXPECTED OUTCOME",
+            outcome: "panel의 계보와 피드백 반응을 연결한 최초의 Figure 발생지도를 구축한다.",
+          },
+          proposal: {
+            title: "2. Figure panel의 발생계보와 graphical abstract로의 운명 결정",
+            intro: "연구 Figure는 동일한 초기 스케치에서 출발하더라도 본문 panel, 보충자료, 학회 포스터 또는 graphical abstract로 서로 다른 운명을 획득한다. 예비 version lineage 분석에서는 글자 크기, 화살표 수와 핵심 메시지의 위치가 분화 직전 급격하게 재편되었다. 본 연구는 공동연구자의 피드백을 morphogen signal로 간주하고, 신호의 농도와 조합이 panel fate를 결정한다는 Figure 발생 모형을 구축하고자 한다.",
+            sections: [
+              {
+                title: "2.1. Version barcode를 이용한 단일 panel 계보 추적",
+                paragraphs: [
+                  "12개의 가상 연구과제에서 생성한 120개 초기 panel에 version hash를 부여하고, 스케치부터 내부 발표, 논문 Figure와 graphical abstract까지 모든 편집 사건을 계보로 기록한다. 실제 발생계보에서 <em>SOX2</em>와 <em>PAX6</em>를 쓰듯 글자 확대와 화살표 정리를 운명 표지로 삼고, single-panel trajectory 분석으로 공통 전구상태와 분기점을 추정한다. 복사하여 다시 붙인 panel은 쌍둥이 계통으로 처리하되, 크기만 바꾼 사본은 새로운 종으로 명명하지 않는다.",
+                ],
+              },
+              {
+                title: "2.2. 피드백 morphogen의 조합적 운명 결정",
+                paragraphs: [
+                  "‘글자를 더 크게’, ‘화살표를 정리’, ‘한 장에 핵심만’의 세 표준화 신호를 농도와 순서를 달리해 panel에 적용한다. 각 처리 후 정보 밀도, 시선 유도와 10초 메시지 회상률을 측정하고 Waddington landscape 위에서 최종 운명을 예측한다. 신호 제거 후 원래 상태로 되돌리는 rescue experiment를 통해 운명 결정의 가역성을 검증하며, 결과는 읽기 쉬운 Figure가 발생하는 최소 신호 조합을 제시할 것이다.",
+                ],
+              },
+            ],
+          },
         },
-      ],
+        appendard: {
+          slide: {
+            eyebrow: "POPULATION GENETICS · GENE FLOW",
+            folio: "AIM 1",
+            title: "학회 에코백의 기관 간 유전자 흐름",
+            thesis: "학회장은 에코백 계통이 연구기관 사이를 이동하고 새로운 표지를 획득하는 접촉지대다.",
+            pillars: [
+              { label: "SAMPLING", value: "240 BAGS", body: "8개 학회·12개 기관에서 반복 관찰" },
+              { label: "MARKERS", value: "24 LOCI", body: "로고·소재·손잡이·명찰·스티커 haplotype" },
+              { label: "GENE FLOW", value: "Fₛₜ → 0", body: "포스터 세션에서 증가하는 기관 간 혼합" },
+            ],
+            visualItems: ["LAB A", "LAB B", "JOINT MTG", "LAB C"],
+            outcomeLabel: "EXPECTED OUTCOME",
+            outcome: "에코백의 이동과 표지 획득으로 학술 공동체의 연결망을 복원한다.",
+          },
+          proposal: {
+            title: "2. 학회 에코백의 유전자 흐름과 연구기관 간 이입",
+            intro: "학회 에코백은 제작 기관의 로고를 유지하면서도 연구자와 함께 이동하고, 새로운 명찰과 스티커를 축적하며 복합적인 계통 신호를 형성한다. 특히 공동학회와 포스터 세션은 서로 다른 에코백 집단이 같은 공간에 모이는 일시적 접촉지대로 기능한다. 본 연구는 에코백의 표지 조합을 다좌위 haplotype으로 정의하고, 학술 교류가 기관 간 유전자 흐름과 introgression을 증가시킨다는 가설을 검증한다.",
+            sections: [
+              {
+                title: "2.1. 에코백 형질 표지와 이동 네트워크 구축",
+                paragraphs: [
+                  "8개 학회와 12개 연구기관에서 240개 에코백을 반복 관찰하고, 로고, 제작 연도, 소재, 손잡이 길이, 명찰과 스티커를 24개 형질 표지로 부호화한다. 소유자의 기관 이동은 에코백의 dispersal event로만 기록하며 개인의 유전정보는 수집하지 않는다. 한 사람이 두 개의 에코백을 겹쳐 든 경우는 배수체로 분류하지 않고 동일 운반체에서 발생한 반복관찰로 처리한다.",
+                ],
+              },
+              {
+                title: "2.2. 집단구조와 학회 접촉지대의 이입 추론",
+                paragraphs: [
+                  "형질 행렬로 기관별 Fₛₜ, 주성분과 admixture 비율을 추정하고, 등록대와 포스터 홀 사이의 이동을 network migration model로 분석한다. 분석 틀은 <em>Arabidopsis thaliana</em>의 종자 분산과 <em>Drosophila melanogaster</em>의 집단구조 연구에서 차용하되, 에코백이 스스로 이동한다는 가정은 두지 않는다. 오래된 학회 에코백에 다른 분야의 스티커가 함께 나타나는 사례는 혼합 계통으로 정의하고, 공동학회 전후의 유효 이주율을 비교한다. 이를 통해 전혀 다른 연구실 행사에서 십 년 전 에코백이 다시 발견되는 경로와 학술 공동체의 장기적인 연결성을 함께 설명할 수 있다.",
+                ],
+              },
+            ],
+          },
+        },
+        jaha: {
+          slide: {
+            eyebrow: "INTEGRATIVE TAXONOMY · SPECIES DELIMITATION",
+            folio: "AIM 1",
+            title: "자하연 ‘마감고둥’ 종복합체의 통합분류",
+            thesis: "초안형·수정본형·최종본형은 한 종의 표현형 변이인가, 서로 다른 세 계통인가?",
+            pillars: [
+              { label: "FIELD DESIGN", value: "12 SITES", body: "석축 수면선에서 월별 반복 채집" },
+              { label: "EVIDENCE", value: "4 LAYERS", body: "패각 형태·치설 micro-CT·COI/16S·전장유전체" },
+              { label: "HYPOTHESIS", value: "<em>Jahaella</em> × 3", body: "가칭 세 후보 종의 경계를 다종 공선조 모형으로 검증" },
+            ],
+            visualItems: ["<em>Jahaella drafta</em>", "<em>J. revisa</em>", "<em>J. finalissima</em>"],
+            outcomeLabel: "EXPECTED OUTCOME",
+            outcome: "통합 종 경계를 제시하고, 수온보다 학위논문 제출 일정이 출현을 더 잘 설명하는지 검정한다.",
+          },
+          proposal: {
+            title: "2. 자하연 ‘마감고둥’ 종복합체의 통합분류와 제출기 계절성",
+            intro: "자하연 석축의 수면선 부근에서는 논문 제출 마감이 가까워질수록 출현 기록이 증가하는 1.5–2.3 mm 크기의 미소 복족류가 반복적으로 관찰되어 왔다. 이른바 ‘마감고둥’은 껍질 무늬에 따라 초안형, 수정본형, 최종본형으로 구분되지만, 예비 COI 분석에서는 파일명에 붙은 버전 수와 유전적 분화가 일치하지 않았다. 본 연구는 이 집단이 단일 종의 표현형 변이인지, 가칭 <em>Jahaella drafta</em>, <em>J. revisa</em>, <em>J. finalissima</em>로 이루어진 종복합체인지 검증하고자 한다.",
+            sections: [
+              {
+                title: "2.1. 형태·유전체 자료를 결합한 종 경계 추론",
+                paragraphs: [
+                  "매월 석축 12개 지점에서 표본을 채집하고, 패각의 기하형태측정, 치설 micro-CT, COI·16S barcode 및 저심도 전장유전체 자료를 확보한다. 계통수와 다종 공선조 모형을 이용해 후보 종의 경계를 추론하며, 원고가 반려된 날에 채집된 개체는 독립된 ‘재투고형’으로 분류하지 않고 반복 측정 자료로 처리한다. 모든 학명은 가칭으로 사용하며 본 연구계획서는 명명 행위로 간주하지 않는다.",
+                ],
+              },
+              {
+                title: "2.2. 마감 신호에 대한 출현 반응 검증",
+                paragraphs: [
+                  "출현 확률을 수온, 강수량, 야간 조도 및 교내 학위논문 제출 일정의 함수로 추정한다. 추가 수조 실험에서는 ‘D−7’, ‘D−1’, ‘제출기한 연장’ 안내문을 무작위로 제시하고 활동량과 산란 행동을 비교한다. 귀무대조군에는 ‘마감 없음’을 제시하며, 연장 승인 처리군에서만 활동량이 급감한다면 마감고둥의 계절성이 환경보다 행정 일정에 의해 조절된다는 최초의 증거가 될 것이다.",
+                ],
+              },
+            ],
+          },
+        },
+      } satisfies Record<FamilyId, FamilySpecimen>,
     },
     weightFamily: {
       heading: "WEIGHT FAMILY",

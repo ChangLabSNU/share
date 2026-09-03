@@ -9,7 +9,7 @@ import {
   weightNames,
   type Family,
   type FamilyId,
-  type PresentationBullet,
+  type GrantSlide,
 } from "./content";
 
 type ViewMode = "stacked" | "overlay";
@@ -33,6 +33,36 @@ function FontText({
   style?: CSSProperties;
 }) {
   return <span className={`${family.className} ${className}`} style={style}>{children}</span>;
+}
+
+function FamilyTagline({ family }: { family: Family }) {
+  if (!Array.isArray(family.tagline)) {
+    return <h3><FontText family={family}>{family.tagline}</FontText></h3>;
+  }
+
+  return (
+    <h3>
+      <FontText family={family}>
+        {family.tagline.map((line, index) => (
+          <Fragment key={`${family.id}-${line}`}>
+            {index > 0 && <br />}
+            {line}
+          </Fragment>
+        ))}
+      </FontText>
+    </h3>
+  );
+}
+
+function StatNote({ family, note }: { family: Family; note: string | string[] }) {
+  if (!Array.isArray(note)) return note;
+
+  return note.map((line, index) => (
+    <Fragment key={`${family.id}-note-${index}`}>
+      {index > 0 && <br />}
+      {line}
+    </Fragment>
+  ));
 }
 
 function ItalicText({ text }: { text: string }) {
@@ -69,20 +99,179 @@ function InlineMarkup({ text }: { text: string }) {
   return renderInlineMarkup(text);
 }
 
-function PresentationList({ bullets }: { bullets: PresentationBullet[] }) {
+function EdgePresentationSlide({ slide }: { slide: GrantSlide }) {
+  const [environment, ...cues] = slide.pillars;
+
   return (
-    <ul>
-      {bullets.map((bullet) => (
-        <li key={bullet.text}>
-          <InlineMarkup text={bullet.text} />
-          {bullet.children && (
-            <ul>
-              {bullet.children.map((child) => <li key={child}><InlineMarkup text={child} /></li>)}
-            </ul>
-          )}
-        </li>
-      ))}
-    </ul>
+    <div className="presentation-design slide-edge">
+      <header className="edge-slide-header">
+        <span>{slide.eyebrow}</span>
+        <span>{slide.folio}</span>
+      </header>
+      <div className="edge-slide-layout">
+        <section className="edge-slide-copy">
+          <h4><InlineMarkup text={slide.title} /></h4>
+          <p><InlineMarkup text={slide.thesis} /></p>
+          <div className="edge-temperature">
+            <span>{environment.label}</span>
+            <strong><InlineMarkup text={environment.value} /></strong>
+            <p><InlineMarkup text={environment.body} /></p>
+          </div>
+        </section>
+        <section className="edge-cue-map">
+          <div className="edge-map-heading"><b>SPATIAL CUE MAP</b><span>RACK 04</span></div>
+          <div className="edge-freezer-grid" aria-hidden="true">
+            {Array.from({ length: 12 }, (_, index) => (
+              <span className={index === 4 ? "target" : index === 8 ? "shifted" : index === 9 ? "recalled" : ""} key={index}>
+                {String(index + 1).padStart(2, "0")}
+              </span>
+            ))}
+          </div>
+          <div className="edge-map-legend">
+            {slide.visualItems.map((item, index) => <span key={item}><i className={`legend-${index}`} />{item}</span>)}
+          </div>
+          <div className="edge-cue-stats">
+            {cues.map((cue) => (
+              <div key={cue.label}>
+                <span>{cue.label}</span>
+                <strong><InlineMarkup text={cue.value} /></strong>
+                <p><InlineMarkup text={cue.body} /></p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+      <footer className="edge-slide-outcome"><span>{slide.outcomeLabel}</span><p><InlineMarkup text={slide.outcome} /></p></footer>
+    </div>
+  );
+}
+
+function SproutPresentationSlide({ slide }: { slide: GrantSlide }) {
+  return (
+    <div className="presentation-design slide-sprout">
+      <header className="sprout-slide-header"><span>{slide.folio}</span><b>{slide.eyebrow}</b></header>
+      <h4><InlineMarkup text={slide.title} /></h4>
+      <p className="sprout-thesis"><InlineMarkup text={slide.thesis} /></p>
+      <div className="sprout-lineage" aria-label="Figure panel 운명 계보">
+        <div className="sprout-origin"><span>PROGENITOR</span><strong>INITIAL SKETCH</strong></div>
+        <div className="sprout-signal"><span>FEEDBACK GRADIENT</span><i /></div>
+        <div className="sprout-fates">
+          {slide.visualItems.map((item, index) => (
+            <div key={item}><span>FATE 0{index + 1}</span><strong>{item}</strong></div>
+          ))}
+        </div>
+      </div>
+      <div className="sprout-metrics">
+        {slide.pillars.map((pillar) => (
+          <div key={pillar.label}><span>{pillar.label}</span><strong><InlineMarkup text={pillar.value} /></strong></div>
+        ))}
+      </div>
+      <footer className="sprout-outcome"><b>{slide.outcomeLabel}</b><p><InlineMarkup text={slide.outcome} /></p></footer>
+    </div>
+  );
+}
+
+function AppendardPresentationSlide({ slide }: { slide: GrantSlide }) {
+  const profiles = [[66, 24, 10], [38, 47, 15], [28, 31, 41], [18, 26, 56]];
+
+  return (
+    <div className="presentation-design slide-appendard">
+      <header className="appendard-slide-header"><b>{slide.eyebrow}</b><span>{slide.folio} · DATA OVERVIEW</span></header>
+      <div className="appendard-slide-main">
+        <section className="appendard-slide-copy">
+          <h4><InlineMarkup text={slide.title} /></h4>
+          <p><InlineMarkup text={slide.thesis} /></p>
+          <div className="appendard-stat-list">
+            {slide.pillars.map((pillar) => (
+              <div key={pillar.label}><span>{pillar.label}</span><strong><InlineMarkup text={pillar.value} /></strong><p><InlineMarkup text={pillar.body} /></p></div>
+            ))}
+          </div>
+        </section>
+        <section className="appendard-admixture">
+          <div className="appendard-chart-heading"><b>POPULATION STRUCTURE</b><span>K = 3</span></div>
+          <div className="appendard-chart">
+            {slide.visualItems.map((item, rowIndex) => (
+              <div className="appendard-chart-row" key={item}>
+                <span>{item}</span>
+                <div aria-hidden="true">
+                  {profiles[rowIndex].map((width, segmentIndex) => <i key={segmentIndex} style={{ width: `${width}%` }} />)}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="appendard-flow"><span>INSTITUTION</span><i>→</i><span>POSTER HALL</span><i>→</i><span>INTROGRESSION</span></div>
+          <footer><b>{slide.outcomeLabel}</b><p><InlineMarkup text={slide.outcome} /></p></footer>
+        </section>
+      </div>
+    </div>
+  );
+}
+
+function JahaPresentationSlide({ slide }: { slide: GrantSlide }) {
+  return (
+    <div className="presentation-design slide-jaha">
+      <header className="jaha-slide-header"><span>{slide.eyebrow}</span><b>{slide.folio}</b></header>
+      <div className="jaha-slide-main">
+        <section className="jaha-slide-copy">
+          <p className="jaha-kicker">INTEGRATIVE STUDY</p>
+          <h4><InlineMarkup text={slide.title} /></h4>
+          <p className="jaha-thesis"><InlineMarkup text={slide.thesis} /></p>
+          <div className="jaha-evidence">
+            {slide.pillars.map((pillar) => (
+              <div key={pillar.label}><span>{pillar.label}</span><strong><InlineMarkup text={pillar.value} /></strong></div>
+            ))}
+          </div>
+          <footer><b>{slide.outcomeLabel}</b><p><InlineMarkup text={slide.outcome} /></p></footer>
+        </section>
+        <aside className="jaha-specimen-plate">
+          <div className="jaha-genus"><em>Jahaella</em><span>species complex</span></div>
+          <ol>
+            {slide.visualItems.map((item, index) => (
+              <li key={item}><span>0{index + 1}</span><b><InlineMarkup text={item} /></b><i aria-hidden="true" /></li>
+            ))}
+          </ol>
+          <p>PROVISIONAL NAMES · NOT A NOMENCLATURAL ACT</p>
+        </aside>
+      </div>
+    </div>
+  );
+}
+
+function PresentationSlide({ family, slide }: { family: Family; slide: GrantSlide }) {
+  if (family.id === "edge") return <EdgePresentationSlide slide={slide} />;
+  if (family.id === "sprout") return <SproutPresentationSlide slide={slide} />;
+  if (family.id === "appendard") return <AppendardPresentationSlide slide={slide} />;
+  return <JahaPresentationSlide slide={slide} />;
+}
+
+function FamilySpecimenCards({ family }: { family: Family }) {
+  const specimens = siteContent.familyStory.specimens;
+  const specimen = specimens.byFamily[family.id];
+
+  return (
+    <div className="specimen-grid">
+      <article className="specimen specimen-lead">
+        <span className="specimen-label">{specimens.presentationLabel}</span>
+        <div className={family.className}>
+          <PresentationSlide family={family} slide={specimen.slide} />
+        </div>
+      </article>
+      <article className="specimen specimen-proposal">
+        <span className="specimen-label">{specimens.proposalLabel}</span>
+        <div className={`proposal-document ${family.className}`}>
+          <h4>{specimen.proposal.title}</h4>
+          <p><InlineMarkup text={specimen.proposal.intro} /></p>
+          {specimen.proposal.sections.map((section) => (
+            <section className="proposal-section" key={section.title}>
+              <h5>{section.title}</h5>
+              {section.paragraphs.map((paragraph) => (
+                <p key={paragraph}><InlineMarkup text={paragraph} /></p>
+              ))}
+            </section>
+          ))}
+        </div>
+      </article>
+    </div>
   );
 }
 
@@ -122,7 +311,6 @@ export default function Home() {
   const family = families.find((item) => item.id === familyId) ?? families[0];
   const feature = siteContent.changes.features;
   const controls = siteContent.compare.controls;
-  const specimens = siteContent.familyStory.specimens;
 
   function chooseFamily(next: Family) {
     setFamilyId(next.id);
@@ -330,7 +518,7 @@ export default function Home() {
             <div>
               <p className="story-source">{item.source}</p>
               <h2><FontText family={item}>{item.displayName}</FontText></h2>
-              <h3><FontText family={item}>{item.tagline}</FontText></h3>
+              <FamilyTagline family={item} />
               <p className="story-summary"><FontText family={item}>{item.summary}</FontText></p>
               <ul className={`use-list ${item.className}`} aria-label={`${item.displayName} ${siteContent.familyStory.recommendedUseAriaSuffix}`}>
                 {item.uses.map((use) => (
@@ -345,36 +533,12 @@ export default function Home() {
               <article key={stat.label} className={item.className}>
                 <strong>{stat.value}</strong>
                 <h4>{stat.label}</h4>
-                <p>{stat.note}</p>
+                <p><StatNote family={item} note={stat.note} /></p>
               </article>
             ))}
           </div>
 
-          <div className="specimen-grid">
-            <article className="specimen specimen-lead">
-              <span className="specimen-label">{specimens.presentationLabel}</span>
-              <div className={`presentation-slide ${item.className}`}>
-                <h4>{specimens.presentationTitle}</h4>
-                <PresentationList bullets={specimens.presentationBullets} />
-                <p className="presentation-prompt"><InlineMarkup text={specimens.presentationPrompt} /></p>
-              </div>
-            </article>
-            <article className="specimen specimen-proposal">
-              <span className="specimen-label">{specimens.proposalLabel}</span>
-              <div className={`proposal-document ${item.className}`}>
-                <h4>{specimens.proposalTitle}</h4>
-                <p><InlineMarkup text={specimens.proposalIntro} /></p>
-                {specimens.proposalSections.map((section) => (
-                  <section className="proposal-section" key={section.title}>
-                    <h5>{section.title}</h5>
-                    {section.paragraphs.map((paragraph) => (
-                      <p key={paragraph}><InlineMarkup text={paragraph} /></p>
-                    ))}
-                  </section>
-                ))}
-              </div>
-            </article>
-          </div>
+          <FamilySpecimenCards family={item} />
 
           <div className="weight-family">
             <div className="weight-heading">
