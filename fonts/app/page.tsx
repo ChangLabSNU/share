@@ -357,7 +357,7 @@ export default function Home() {
       </section>
 
       <section className="biology-brief" aria-label={siteContent.changes.ariaLabel}>
-        <article className="feature-card feature-italic">
+        <article className="feature-card feature-italic" id="italic">
           <header className="feature-meta">
             <span>{feature.italic.number}</span>
             <b>{feature.italic.scope}</b>
@@ -374,7 +374,7 @@ export default function Home() {
           </div>
         </article>
 
-        <article className="feature-card feature-weight">
+        <article className="feature-card feature-weight" id="weight">
           <header className="feature-meta">
             <span>{feature.weight.number}</span>
             <b>{feature.weight.scope}</b>
@@ -397,7 +397,7 @@ export default function Home() {
           </div>
         </article>
 
-        <article className="feature-card feature-latin">
+        <article className="feature-card feature-latin" id="latin">
           <header className="feature-meta">
             <span>{feature.latin.number}</span>
             <b>{feature.latin.scope}</b>
@@ -418,7 +418,7 @@ export default function Home() {
           </div>
         </article>
 
-        <article className="feature-card feature-width">
+        <article className="feature-card feature-width" id="width">
           <header className="feature-meta">
             <span>{feature.width.number}</span>
             <b>{feature.width.scope}</b>
@@ -556,7 +556,7 @@ export default function Home() {
         </section>
       ))}
 
-      <section className="glyph-section">
+      <section className="glyph-section" id="character-set">
         <p className="section-no">{siteContent.characterSet.sectionNumber}</p>
         <div className="glyph-wall">
           <p className="font-edge">{siteContent.characterSet.edgeTranscript}</p>
@@ -589,7 +589,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="credits">
+      <section className="credits" id="sources-licenses">
         <p className="section-no">{siteContent.credits.sectionNumber}</p>
         <div className="credit-grid">
           <p>

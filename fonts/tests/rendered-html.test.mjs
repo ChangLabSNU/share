@@ -87,6 +87,32 @@ test("statically exports the QBio Fonts showcase", async () => {
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/);
 });
 
+test("section headings expose stable fragment bookmarks", async () => {
+  const html = await readFile(new URL("../dist/client/index.html", import.meta.url), "utf8");
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const bookmarkIds = [
+    "top",
+    "families",
+    "italic",
+    "weight",
+    "latin",
+    "width",
+    "compare",
+    "edge",
+    "sprout",
+    "appendard",
+    "jaha",
+    "character-set",
+    "download",
+    "sources-licenses",
+  ];
+
+  bookmarkIds.forEach((id) => {
+    assert.match(html, new RegExp(`<(?:section|article)[^>]*\\bid="${id}"`));
+  });
+  assert.match(css, /main>section\[id\],\.biology-brief>\.feature-card\[id\] \{ scroll-margin-top:80px; \}/);
+});
+
 test("family editorial copy uses the family being introduced", async () => {
   const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
