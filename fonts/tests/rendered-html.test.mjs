@@ -66,7 +66,7 @@ test("statically exports the QBio Fonts showcase", async () => {
   assert.match(html, /github\.com\/hyeshik\/snu-edge\/releases\/download\/v0\.6\.2\/SNUEdge-0\.6\.2\.zip/);
   assert.match(html, /github\.com\/hyeshik\/snu-sprout\/releases\/download\/v0\.9\.2\/SNUSprout-0\.9\.2\.zip/);
   assert.match(html, /github\.com\/hyeshik\/snu-appendard\/releases\/download\/v0\.6\.1\/SNUAppendard-0\.6\.1\.zip/);
-  assert.match(html, /github\.com\/hyeshik\/snu-jaha\/releases\/download\/v0\.1\.0\/SNUJaha-0\.1\.0\.zip/);
+  assert.match(html, /github\.com\/hyeshik\/snu-jaha\/releases\/download\/v0\.2\.0\/SNUJaha-0\.2\.0\.zip/);
   assert.match(html, /SNU Edge/);
   assert.match(html, /어펜다드/);
   assert.match(html, /새싹/);
@@ -277,7 +277,7 @@ test("production webfonts use their release versions as cache keys", async () =>
   assert.equal((css.match(/appendard\/[^"]+\?v=0\.6\.1/g) ?? []).length, 18);
   assert.equal((css.match(/sprout\/[^"]+\?v=0\.9\.2/g) ?? []).length, 16);
   assert.equal((css.match(/edge\/[^"]+\?v=0\.6\.2/g) ?? []).length, 16);
-  assert.equal((css.match(/jaha\/SNUJaha-[^"]+\?v=0\.1\.0/g) ?? []).length, 14);
+  assert.equal((css.match(/jaha\/SNUJaha-[^"]+\?v=0\.2\.0/g) ?? []).length, 14);
 });
 
 test("SNU Sprout 0.9 exposes every Roman and Italic weight", async () => {
@@ -320,14 +320,14 @@ test("SNU Jaha exposes seven Roman and native italic weights", async () => {
   ];
 
   assert.match(content, /id: "jaha"[\s\S]*?weights: \[100, 300, 400, 500, 600, 700, 800\]/);
-  assert.match(content, /download: "https:\/\/github\.com\/hyeshik\/snu-jaha\/releases\/download\/v0\.1\.0\/SNUJaha-0\.1\.0\.zip"/);
+  assert.match(content, /download: "https:\/\/github\.com\/hyeshik\/snu-jaha\/releases\/download\/v0\.2\.0\/SNUJaha-0\.2\.0\.zip"/);
   assert.match(content, /value: "En", label: "좁은 영문 폭"/);
   assert.doesNotMatch(content, /hasItalic|romanStylesSuffix/);
   assert.match(css, /RIDIBatang\.woff2/);
 
   for (const [name, weight] of weights) {
-    const roman = new RegExp(`SNUJaha-${name}\\.woff2\\?v=0\\.1\\.0"\\) format\\("woff2"\\); font-weight: ${weight}; font-style: normal`);
-    const italic = new RegExp(`SNUJaha-${name}Italic\\.woff2\\?v=0\\.1\\.0"\\) format\\("woff2"\\); font-weight: ${weight}; font-style: italic`);
+    const roman = new RegExp(`SNUJaha-${name}\\.woff2\\?v=0\\.2\\.0"\\) format\\("woff2"\\); font-weight: ${weight}; font-style: normal`);
+    const italic = new RegExp(`SNUJaha-${name}Italic\\.woff2\\?v=0\\.2\\.0"\\) format\\("woff2"\\); font-weight: ${weight}; font-style: italic`);
     assert.match(css, roman);
     assert.match(css, italic);
   }

@@ -127,7 +127,7 @@ export const families: Family[] = [
       { value: "En", label: "좁은 영문 폭", note: "Latin 글자의 폭을 한글과 비슷한 리듬으로 좁혀서 영어가 많이 섞인 텍스트도 자연스럽게 읽힙니다" },
     ],
     uses: ["논문", "연구계획서", "보고서", "공식 안내문", "표·참고문헌"],
-    download: "https://github.com/hyeshik/snu-jaha/releases/download/v0.1.0/SNUJaha-0.1.0.zip",
+    download: "https://github.com/hyeshik/snu-jaha/releases/download/v0.2.0/SNUJaha-0.2.0.zip",
   },
 ];
 

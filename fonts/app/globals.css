@@ -50,20 +50,20 @@
 @font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-ExtraBoldItalic.woff2?v=0.6.2") format("woff2"); font-weight: 800; font-style: italic; font-display: swap; }
 @font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-Black.woff2?v=0.6.2") format("woff2"); font-weight: 900; font-style: normal; font-display: swap; }
 @font-face { font-family: "SNU Edge Web"; src: url("/share/fonts/fonts/edge/SNUEdge-BlackItalic.woff2?v=0.6.2") format("woff2"); font-weight: 900; font-style: italic; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Thin.woff2?v=0.1.0") format("woff2"); font-weight: 100; font-style: normal; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-ThinItalic.woff2?v=0.1.0") format("woff2"); font-weight: 100; font-style: italic; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Light.woff2?v=0.1.0") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-LightItalic.woff2?v=0.1.0") format("woff2"); font-weight: 300; font-style: italic; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Regular.woff2?v=0.1.0") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-RegularItalic.woff2?v=0.1.0") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Medium.woff2?v=0.1.0") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-MediumItalic.woff2?v=0.1.0") format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-SemiBold.woff2?v=0.1.0") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-SemiBoldItalic.woff2?v=0.1.0") format("woff2"); font-weight: 600; font-style: italic; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Bold.woff2?v=0.1.0") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-BoldItalic.woff2?v=0.1.0") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-ExtraBold.woff2?v=0.1.0") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
-@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-ExtraBoldItalic.woff2?v=0.1.0") format("woff2"); font-weight: 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Thin.woff2?v=0.2.0") format("woff2"); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-ThinItalic.woff2?v=0.2.0") format("woff2"); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Light.woff2?v=0.2.0") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-LightItalic.woff2?v=0.2.0") format("woff2"); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Regular.woff2?v=0.2.0") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-RegularItalic.woff2?v=0.2.0") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Medium.woff2?v=0.2.0") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-MediumItalic.woff2?v=0.2.0") format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-SemiBold.woff2?v=0.2.0") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-SemiBoldItalic.woff2?v=0.2.0") format("woff2"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-Bold.woff2?v=0.2.0") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-BoldItalic.woff2?v=0.2.0") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-ExtraBold.woff2?v=0.2.0") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "SNU Jaha Web"; src: url("/share/fonts/fonts/jaha/SNUJaha-ExtraBoldItalic.woff2?v=0.2.0") format("woff2"); font-weight: 800; font-style: italic; font-display: swap; }
 @font-face { font-family: "Pretendard Source"; src: url("/share/fonts/fonts/source/PretendardVariable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
 @font-face { font-family: "Inter Source"; src: url("/share/fonts/fonts/source/InterVariable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
 @font-face { font-family: "Inter Source"; src: url("/share/fonts/fonts/source/InterVariable-Italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
