@@ -62,12 +62,12 @@ export const families: Family[] = [
     tagline: "산뜻하고 감각적인 슬라이드나 강조가 필요한 박스 내용에.",
     summary: "깔끔하면서도 심심하지 않은 센스있는 인상으로 제목·표제·섹션 제목·프리젠테이션·Figure label·박스 내용을 선명하게 만들어줍니다. 공간이 부족한 곳에서도 쓸 수 있게 한글 폭을 다듬고, 영문 가독성을 높이기 위해 라틴 문자를 Montserrat로 바꿨습니다. 이탤릭체가 제공되어, 학술 문서를 정확히 표현할 수 있습니다.",
     stats: [
-      { value: "90%", label: "가로 압축·영문 교체", note: "NanumSquare와 Montserrat의 폭과 자간을 정돈하여 어느 위치에도 쓸 수 있습니다" },
+      { value: "1:1", label: "한글 비율 보존·영문 교체", note: "NanumSquare의 가로·세로 비율을 보존하고, Montserrat의 크기와 간격을 Apple SD Gothic Neo에 맞췄습니다" },
       { value: "4 → 8", label: "굵기", note: "굵기를 4개에서 8개로 대폭 확장하여 감각적이고 리듬감 있는 강조가 가능합니다" },
       { value: "/", label: "이탤릭", note: "유전자명, 학명, 라틴어 표현, 강조를 정확히 표현하기 위해 진짜 이탤릭을 포함 했습니다" },
     ],
     uses: ["제목·표제", "섹션 제목", "프리젠테이션", "Figure label", "콜 아웃", "선택적 본문"],
-    download: "https://github.com/hyeshik/snu-edge/releases/download/v0.6.3/SNUEdge-0.6.3.zip",
+    download: "https://github.com/hyeshik/snu-edge/releases/download/v0.6.4/SNUEdge-0.6.4.zip",
   },
   {
     id: "sprout",
@@ -87,7 +87,7 @@ export const families: Family[] = [
       { value: "=", label: "굵기 일치", note: "Edge, Appendard와 같은 굵기 설정에서 시각적으로도 비슷한 굵기로 보이게 미세조정하여 섞어 써도 잘 어울립니다" },
     ],
     uses: ["제목", "프리젠테이션", "부분 강조", "대화"],
-    download: "https://github.com/hyeshik/snu-sprout/releases/download/v0.9.3/SNUSprout-0.9.3.zip",
+    download: "https://github.com/hyeshik/snu-sprout/releases/download/v0.9.4/SNUSprout-0.9.4.zip",
   },
   {
     id: "appendard",
@@ -107,7 +107,7 @@ export const families: Family[] = [
       { value: "/", label: "진짜 이탤릭", note: "Inter의 true italic을 이식하여 학명·유전자명·라틴어 표현을 완벽하게 조판" },
     ],
     uses: ["논문 본문", "보고서 본문", "Figure label", "프리젠테이션"],
-    download: "https://github.com/hyeshik/snu-appendard/releases/download/v0.6.2/SNUAppendard-0.6.2.zip",
+    download: "https://github.com/hyeshik/snu-appendard/releases/download/v0.6.3/SNUAppendard-0.6.3.zip",
   },
   {
     id: "jaha",
@@ -127,7 +127,7 @@ export const families: Family[] = [
       { value: "En", label: "좁은 영문 폭", note: "Latin 글자의 폭을 한글과 비슷한 리듬으로 좁혀서 영어가 많이 섞인 텍스트도 자연스럽게 읽힙니다" },
     ],
     uses: ["논문", "연구계획서", "보고서", "공식 안내문", "표·참고문헌"],
-    download: "https://github.com/hyeshik/snu-jaha/releases/download/v0.2.1/SNUJaha-0.2.1.zip",
+    download: "https://github.com/hyeshik/snu-jaha/releases/download/v0.2.2/SNUJaha-0.2.2.zip",
   },
 ];
 
