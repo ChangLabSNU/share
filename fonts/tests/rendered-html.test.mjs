@@ -64,8 +64,8 @@ test("statically exports the QBio Fonts showcase", async () => {
   assert.match(html, /SNU Jaha/);
   assert.doesNotMatch(html, /SNU Sprout Sans|SNUSproutSans/);
   assert.match(html, /github\.com\/hyeshik\/snu-edge\/releases\/download\/v0\.6\.4\/SNUEdge-0\.6\.4\.zip/);
-  assert.match(html, /github\.com\/hyeshik\/snu-sprout\/releases\/download\/v0\.9\.4\/SNUSprout-0\.9\.4\.zip/);
-  assert.match(html, /github\.com\/hyeshik\/snu-appendard\/releases\/download\/v0\.6\.3\/SNUAppendard-0\.6\.3\.zip/);
+  assert.match(html, /github\.com\/hyeshik\/snu-sprout\/releases\/download\/v0\.9\.5\/SNUSprout-0\.9\.5\.zip/);
+  assert.match(html, /github\.com\/hyeshik\/snu-appendard\/releases\/download\/v0\.6\.4\/SNUAppendard-0\.6\.4\.zip/);
   assert.match(html, /github\.com\/hyeshik\/snu-jaha\/releases\/download\/v0\.2\.2\/SNUJaha-0\.2\.2\.zip/);
   assert.match(html, /SNU Edge/);
   assert.match(html, /어펜다드/);
@@ -300,8 +300,8 @@ test("all declared webfonts and public assets exist", async () => {
 test("production webfonts use their release versions as cache keys", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
 
-  assert.equal((css.match(/appendard\/[^"]+\?v=0\.6\.3/g) ?? []).length, 18);
-  assert.equal((css.match(/sprout\/[^"]+\?v=0\.9\.4/g) ?? []).length, 16);
+  assert.equal((css.match(/appendard\/[^"]+\?v=0\.6\.4/g) ?? []).length, 18);
+  assert.equal((css.match(/sprout\/[^"]+\?v=0\.9\.5/g) ?? []).length, 16);
   assert.equal((css.match(/edge\/[^"]+\?v=0\.6\.4/g) ?? []).length, 16);
   assert.equal((css.match(/jaha\/SNUJaha-[^"]+\?v=0\.2\.2/g) ?? []).length, 14);
 });
@@ -321,12 +321,12 @@ test("SNU Sprout 0.9 exposes every Roman and Italic weight", async () => {
   ];
 
   assert.match(content, /weights: \[100, 300, 400, 500, 600, 700, 800, 900\]/);
-  assert.match(content, /download: "https:\/\/github\.com\/hyeshik\/snu-sprout\/releases\/download\/v0\.9\.4\/SNUSprout-0\.9\.4\.zip"/);
+  assert.match(content, /download: "https:\/\/github\.com\/hyeshik\/snu-sprout\/releases\/download\/v0\.9\.5\/SNUSprout-0\.9\.5\.zip"/);
   assert.doesNotMatch(content, /250: "Thin"/);
 
   for (const [name, weight] of weights) {
-    const roman = new RegExp(`SNUSprout-${name}\\.woff2\\?v=0\\.9\\.4"\\) format\\("woff2"\\); font-weight: ${weight}; font-style: normal`);
-    const italic = new RegExp(`SNUSprout-${name}Italic\\.woff2\\?v=0\\.9\\.4"\\) format\\("woff2"\\); font-weight: ${weight}; font-style: italic`);
+    const roman = new RegExp(`SNUSprout-${name}\\.woff2\\?v=0\\.9\\.5"\\) format\\("woff2"\\); font-weight: ${weight}; font-style: normal`);
+    const italic = new RegExp(`SNUSprout-${name}Italic\\.woff2\\?v=0\\.9\\.5"\\) format\\("woff2"\\); font-weight: ${weight}; font-style: italic`);
     assert.match(css, roman);
     assert.match(css, italic);
   }

@@ -87,7 +87,7 @@ export const families: Family[] = [
       { value: "=", label: "굵기 일치", note: "Edge, Appendard와 같은 굵기 설정에서 시각적으로도 비슷한 굵기로 보이게 미세조정하여 섞어 써도 잘 어울립니다" },
     ],
     uses: ["제목", "프리젠테이션", "부분 강조", "대화"],
-    download: "https://github.com/hyeshik/snu-sprout/releases/download/v0.9.4/SNUSprout-0.9.4.zip",
+    download: "https://github.com/hyeshik/snu-sprout/releases/download/v0.9.5/SNUSprout-0.9.5.zip",
   },
   {
     id: "appendard",
@@ -107,7 +107,7 @@ export const families: Family[] = [
       { value: "/", label: "진짜 이탤릭", note: "Inter의 true italic을 이식하여 학명·유전자명·라틴어 표현을 완벽하게 조판" },
     ],
     uses: ["논문 본문", "보고서 본문", "Figure label", "프리젠테이션"],
-    download: "https://github.com/hyeshik/snu-appendard/releases/download/v0.6.3/SNUAppendard-0.6.3.zip",
+    download: "https://github.com/hyeshik/snu-appendard/releases/download/v0.6.4/SNUAppendard-0.6.4.zip",
   },
   {
     id: "jaha",
